@@ -1,34 +1,48 @@
-# Proyecto Sostenibilidad 🌿
+# InforFix: Portal de Digitalización y Sostenibilidad 🌐🌱
 
-Un proyecto web moderno construido exclusivamente con tecnologías "legacy" (HTML5, CSS3, JavaScript Vanilla), enfocado en la sostenibilidad y el diseño premium.
+Este proyecto es el portal oficial de **InforFix**, una empresa líder en reparación tecnológica y servicios de digitalización con sede en Granada. El sitio web está diseñado no solo para mostrar los servicios técnicos y de consultoría, sino también para presentar el **Plan de Sostenibilidad 2026**.
 
-## ✨ Características
+## 🏢 Sobre InforFix
 
-- **Diseño Glassmorphism**: Interfaz moderna con efectos de desenfocado y transparencias.
-- **Arquitectura Limpia**: Estructura de archivos organizada por responsabilidades (layout, componentes, lógica).
-- **Animaciones Suaves**: Micro-interacciones y revelado de elementos al hacer scroll sin librerías externas.
-- **Totalmente Responsivo**: Adaptado para móviles, tablets y escritorio.
-- **Optimizado para SEO**: Etiquetas meta, estructura semántica y fuentes modernas (Inter & Outfit).
+- **Sede**: Granada, España (Sede Principal y Oficina Técnica).
+- **Equipo**: 60 empleados especializados.
+- **Sectores**: Educación, Sanidad, Comercio Electrónico y Administración Pública.
+- **Servicios Clave**: Desarrollo de apps empresariales, Servicios Cloud, Mantenimiento de Hardware, Gestión de Redes y Consultoría Tecnológica.
 
-## 🚀 Estructura del Proyecto
+## 🌿 Compromiso con la Sostenibilidad
+
+Actualmente, InforFix se encuentra en una fase de transformación hacia un modelo de negocio más verde. Este portal destaca:
+- **Diagnóstico Energético**: Transición de energías convencionales a renovables.
+- **Economía Circular**: Plan de reciclaje y reutilización de componentes electrónicos.
+- **Logística Limpia**: Reducción de emisiones en el servicio de transporte.
+- **Infraestructura Verde**: Migración hacia proveedores de cloud con políticas medioambientales responsables.
+
+## ✨ Características Técnicas
+
+- **Tecnología**: HTML5, CSS3 (Vanilla) y JavaScript Moderno.
+- **Diseño**: Estética *Tech-Ecological* con efectos de Glassmorphism y animaciones de scroll.
+- **Arquitectura**: Código modular separado en capas de diseño (Sistema base, Layout y Componentes).
+- **Responsivo**: Adaptado para todos los dispositivos mediante CSS Grid y Flexbox.
+
+## 🚀 Instalación y Uso
+
+El proyecto es estático y no requiere dependencias.
+1. Clona el repositorio.
+2. Abre `index.html` en tu navegador.
+
+## 🛠️ Estructura
 
 ```text
 /
-├── assets/         # Recursos estáticos (imágenes, iconos, fuentes)
+├── assets/         # Recursos visuales y logotipos
 ├── css/
-│   ├── main.css        # Sistema de diseño, variables y resets
-│   ├── layout.css      # Grids, flexbox y estructura base
-│   └── components.css  # Estilos específicos de componentes premium
+│   ├── main.css        # Sistema de colores Tech-Eco y resets
+│   ├── layout.css      # Grids y estructura responsiva
+│   └── components.css  # Tarjetas, efectos glass y secciones especiales
 ├── js/
-│   └── main.js         # Lógica de interactividad y animaciones
-├── index.html      # Punto de entrada principal
-└── .gitignore      # Configuraciones de Git
+│   └── main.js         # Interactividad y observer de animaciones
+└── index.html      # Página principal de InforFix
 ```
 
-## 🛠️ Desarrollo
-
-Para ver el proyecto, simplemente abre el archivo `index.html` en cualquier navegador moderno. No requiere compilación ni servidores especiales.
-
-## 📝 Licencia
-
-Este proyecto fue generado como base para una aplicación de sostenibilidad.
+---
+*Hecho por InforFix Digital - Comprometidos con el Futuro de Granada.*

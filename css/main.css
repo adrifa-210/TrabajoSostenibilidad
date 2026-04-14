@@ -1,20 +1,23 @@
 /* DESIGN SYSTEM - main.css */
 :root {
-    /* Color Palette - Sustainability Theme (HSL) */
-    --primary-h: 142;
+    /* Color Palette - InforFix Tech-Eco Theme (HSL) */
+    --primary-h: 215; /* Tech Blue */
     --primary-s: 70%;
     --primary-l: 45%;
     --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    --primary-light: hsl(var(--primary-h), var(--primary-s), 95%);
-    --primary-dark: hsl(var(--primary-h), var(--primary-s), 25%);
+    
+    --eco-h: 142; /* Eco Green */
+    --eco-s: 60%;
+    --eco-l: 45%;
+    --eco: hsl(var(--eco-h), var(--eco-s), var(--eco-l));
     
     --accent-h: 180;
     --accent: hsl(var(--accent-h), 80%, 40%);
     
-    --text-main: hsl(210, 20%, 15%);
-    --text-muted: hsl(210, 10%, 45%);
+    --text-main: hsl(210, 25%, 12%);
+    --text-muted: hsl(210, 10%, 40%);
     --bg-white: hsl(0, 0%, 100%);
-    --bg-light: hsl(142, 20%, 98%);
+    --bg-light: hsl(215, 20%, 97%);
     
     /* Shadows & Glassmorphism */
     --shadow-soft: 0 10px 30px -10px hsla(var(--primary-h), 50%, 20%, 0.1);

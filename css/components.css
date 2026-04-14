@@ -119,3 +119,73 @@ header.glass {
 .nav-item:hover::after {
     width: 100%;
 }
+
+/* Diagnosis Grid */
+.bg-dark {
+    background-color: var(--text-main);
+    color: white;
+}
+
+.diagnosis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.diagnosis-item {
+    padding: 2rem;
+    border-left: 4px solid var(--eco);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 16px 16px 0;
+    transition: var(--transition);
+}
+
+.diagnosis-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.diagnosis-item h4 {
+    color: var(--eco);
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.border-eco { border-color: var(--eco); }
+
+/* Infrastructure List */
+.infra-list {
+    margin-top: 1.5rem;
+}
+
+.infra-list li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.infra-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+}
+
+.glass-box {
+    background: var(--bg-light);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid var(--glass-border);
+}
+
+.hero-badge {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
