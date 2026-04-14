@@ -23,18 +23,21 @@ header.glass {
 
 /* Modal Open State */
 header.glass.mobile-nav-open {
-    background: rgba(10, 15, 25, 0.95); /* Dark premium glass */
+    background: rgba(10, 15, 25, 0.95);
+    /* Dark premium glass */
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     border-color: rgba(255, 255, 255, 0.1);
 }
 
 header.glass.mobile-nav-open .logo span {
-    color: white; /* Invert logo for dark menu */
+    color: white;
+    /* Invert logo for dark menu */
 }
 
 header.glass.mobile-nav-open .bar {
-    background-color: white; /* Invert toggle for dark menu */
+    background-color: white;
+    /* Invert toggle for dark menu */
 }
 
 .mobile-menu-toggle {
@@ -87,20 +90,11 @@ header.glass.mobile-nav-open .bar {
     box-shadow: 0 6px 20px hsla(var(--primary-h), 50%, 40%, 0.4);
 }
 
-.btn-secondary {
-    background: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-}
-
-.btn-secondary:hover {
-    background: var(--primary-light);
-}
-
 /* 3D Flip Cards */
 .card-container {
     perspective: 1500px;
-    height: 380px; /* Fixed height for 3D stability */
+    height: 380px;
+    /* Fixed height for 3D stability */
     width: 100%;
 }
 
@@ -112,7 +106,8 @@ header.glass.mobile-nav-open .bar {
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
     cursor: pointer;
-    will-change: transform; /* Hint to GPU */
+    will-change: transform;
+    /* Hint to GPU */
 }
 
 /* Hover on desktop, .is-flipped for mobile JS */
@@ -121,7 +116,8 @@ header.glass.mobile-nav-open .bar {
     transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -143,13 +139,15 @@ header.glass.mobile-nav-open .bar {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    transform: translateZ(1px); /* Position in front */
+    transform: translateZ(1px);
+    /* Position in front */
 }
 
 .card-back {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
-    transform: rotateY(180deg) translateZ(1px); /* Position in back relative to inner */
+    transform: rotateY(180deg) translateZ(1px);
+    /* Position in back relative to inner */
     padding: 2rem;
 }
 
@@ -259,10 +257,11 @@ header.glass.mobile-nav-open .bar {
     object-fit: cover;
     padding: 0;
     filter: brightness(0.9) blur(3px);
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                filter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+        filter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     z-index: 1;
-    will-change: transform, filter; /* Optimization */
+    will-change: transform, filter;
+    /* Optimization */
 }
 
 .hero-visual:hover .hero-card-img {
@@ -276,7 +275,7 @@ header.glass.mobile-nav-open .bar {
     transition: var(--transition);
     background: white;
     color: var(--primary);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .hero-visual:hover .hero-center-btn {
@@ -342,29 +341,103 @@ header.glass.mobile-nav-open .bar {
     border-color: var(--eco);
 }
 
-/* Infrastructure List */
-.infra-list {
-    margin-top: 1.5rem;
+/* Infrastructure Section */
+.infra-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.infra-list li {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
+.infra-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.infra-item:hover {
+    background: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.03);
+    transform: translateX(10px);
+}
+
+.infra-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.1), hsla(var(--accent-h), 80%, 40%, 0.1));
+    color: var(--primary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.infra-item:hover .infra-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    box-shadow: 0 8px 15px hsla(var(--primary-h), 50%, 40%, 0.3);
+}
+
+.infra-text strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    margin-bottom: 0.25rem;
+}
+
+.infra-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.quote-card blockquote {
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
     position: relative;
+    z-index: 1;
 }
 
-.infra-list li::before {
-    content: '→';
-    position: absolute;
-    left: 0;
+.quote-icon {
+    margin-bottom: 1rem;
+}
+
+.badge {
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.badge-primary {
+    background: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.1);
     color: var(--primary);
 }
 
 .glass-box {
-    background: var(--bg-light);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
     border-radius: 20px;
     padding: 2rem;
-    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.glass-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -15px hsla(var(--primary-h), 50%, 20%, 0.15);
+    border-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.3);
 }
 
 /* Responsive Overrides */
@@ -380,10 +453,21 @@ header.glass.mobile-nav-open .bar {
         animation: slideInUp 0.4s ease forwards;
     }
 
-    .nav-links.mobile-active li:nth-child(1) { animation-delay: 0.1s; }
-    .nav-links.mobile-active li:nth-child(2) { animation-delay: 0.2s; }
-    .nav-links.mobile-active li:nth-child(3) { animation-delay: 0.3s; }
-    .nav-links.mobile-active li:nth-child(4) { animation-delay: 0.4s; }
+    .nav-links.mobile-active li:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .nav-links.mobile-active li:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .nav-links.mobile-active li:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .nav-links.mobile-active li:nth-child(4) {
+        animation-delay: 0.4s;
+    }
 
     .nav-links.mobile-active a {
         font-size: 1.5rem;
@@ -397,15 +481,18 @@ header.glass.mobile-nav-open .bar {
             transform: translateY(0);
         }
     }
+
     .mobile-menu-toggle {
-        display: flex !important; /* Ensure visibility */
+        display: flex !important;
+        /* Ensure visibility */
     }
 
     .diagnosis-grid {
         grid-template-columns: 1fr;
     }
 
-    .col-3, .col-2 {
+    .col-3,
+    .col-2 {
         grid-template-columns: 1fr !important;
     }
 

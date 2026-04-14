@@ -1,7 +1,8 @@
 /* css/sostenibilidad.css */
 
 .sustainability-hero {
-    padding-top: 10rem; /* Espacio fijo para el header, igual que en hero de main */
+    padding-top: 10rem;
+    /* Espacio fijo para el header, igual que en hero de main */
     padding-bottom: var(--space-4);
 }
 
@@ -53,7 +54,7 @@
     background: var(--bg-white);
     border: 3px solid var(--eco);
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.1s ease;
 }
 
@@ -81,7 +82,8 @@
     transform-style: preserve-3d;
 }
 
-.kpi-front, .kpi-back {
+.kpi-front,
+.kpi-back {
     border-radius: 12px !important;
     padding: 1rem 1.5rem !important;
 }
@@ -121,13 +123,13 @@
 
 /* Chart Cards */
 .chart-card {
-    background: var(--bg-white);
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    border: 1px solid var(--bg-light);
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.chart-card:hover {
+    transform: translateY(-5px);
 }
 
 .chart-header {
@@ -156,10 +158,26 @@
     font-weight: 800;
 }
 
-.ods-7-13 { background: linear-gradient(135deg, #FCC30B, #3F7E44); } /* Yellow & Green */
-.ods-12 { background-color: #BF8B2E; } /* Dark Gold */
-.ods-11-13 { background: linear-gradient(135deg, #FD9D24, #3F7E44); } /* Orange & Green */
-.ods-9-17 { background: linear-gradient(135deg, #FD6925, #19486A); } /* Orange & Dark Blue */
+.ods-7-13 {
+    background: linear-gradient(135deg, #FCC30B, #3F7E44);
+}
+
+/* Yellow & Green */
+.ods-12 {
+    background-color: #BF8B2E;
+}
+
+/* Dark Gold */
+.ods-11-13 {
+    background: linear-gradient(135deg, #FD9D24, #3F7E44);
+}
+
+/* Orange & Green */
+.ods-9-17 {
+    background: linear-gradient(135deg, #FD6925, #19486A);
+}
+
+/* Orange & Dark Blue */
 
 .chart-desc {
     font-size: 0.85rem;
@@ -192,6 +210,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -226,7 +245,7 @@
 
 .btn-icon:hover {
     color: var(--primary);
-    background: rgba(0,0,0,0.05);
+    background: rgba(0, 0, 0, 0.05);
 }
 
 .chart-modal-overlay {
@@ -235,7 +254,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(10, 15, 25, 0.85); /* Tema oscuro para modal fullscreen */
+    background: rgba(10, 15, 25, 0.85);
+    /* Tema oscuro para modal fullscreen */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 9999;
