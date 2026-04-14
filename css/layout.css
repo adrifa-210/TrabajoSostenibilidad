@@ -198,15 +198,17 @@ header nav {
 /* Footer Layout */
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     padding: var(--space-3) 0;
     border-top: 1px solid var(--glass-border);
 }
 
 .footer-bottom {
     text-align: center;
-    padding: 2rem 0;
+    padding: 2rem 1.5rem; /* Added horizontal padding */
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
     color: var(--text-muted);
+    line-height: 1.5;
 }
