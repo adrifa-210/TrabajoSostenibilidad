@@ -14,8 +14,12 @@ header.glass {
     top: 1rem;
     z-index: 1000;
     margin: 1rem auto;
-    border-radius: 100px;
     width: clamp(300px, 90%, 1100px);
+    /* Fully transparent background */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
 }
 
 /* Buttons */
