@@ -1,0 +1,144 @@
+/* css/grupos-interes.css */
+
+/* ── Enlace activo en el nav ──────────────────────────────── */
+.nav-item--active {
+    color: var(--primary) !important;
+}
+
+/* ── Sección Hero ─────────────────────────────────────────── */
+.stakeholders-hero {
+    padding-top: 10rem;
+    padding-bottom: var(--space-4);
+    background: var(--bg-light);
+    text-align: center;
+}
+
+.stakeholders-hero h1 span {
+    color: var(--primary);
+}
+
+.hero-subtitle {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ── Sección de tarjetas ──────────────────────────────────── */
+.stakeholders-section {
+    padding: var(--space-4) 0 var(--space-5);
+    background: var(--bg-light);
+}
+
+.stakeholder-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.stakeholder-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stakeholder-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+}
+
+.stakeholder-icon.clients   { background: linear-gradient(135deg, hsl(215, 70%, 45%), hsl(200, 80%, 50%)); }
+.stakeholder-icon.employees { background: linear-gradient(135deg, hsl(142, 60%, 35%), hsl(160, 60%, 45%)); }
+.stakeholder-icon.suppliers { background: linear-gradient(135deg, hsl(35, 90%, 50%),  hsl(25, 85%, 55%));  }
+.stakeholder-icon.public    { background: linear-gradient(135deg, hsl(280, 55%, 45%), hsl(260, 50%, 55%)); }
+
+.stakeholder-card-header h2 {
+    font-size: 1.3rem;
+    margin: 0;
+    color: var(--text-main);
+}
+
+.group-tag {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 2px;
+}
+
+/* ── Divisor de color ─────────────────────────────────────── */
+.stakeholder-divider {
+    height: 2px;
+    border-radius: 2px;
+    border: none;
+    margin: 0;
+}
+
+.stakeholder-divider.clients   { background: linear-gradient(90deg, hsl(215, 70%, 45%), transparent); }
+.stakeholder-divider.employees { background: linear-gradient(90deg, hsl(142, 60%, 35%), transparent); }
+.stakeholder-divider.suppliers { background: linear-gradient(90deg, hsl(35, 90%, 50%),  transparent); }
+.stakeholder-divider.public    { background: linear-gradient(90deg, hsl(280, 55%, 45%), transparent); }
+
+/* ── Descripción y lista de expectativas ─────────────────── */
+.stakeholder-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.stakeholder-expectations {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.stakeholder-expectations li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.expectation-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.dot-clients   { background: hsl(215, 70%, 45%); }
+.dot-employees { background: hsl(142, 60%, 35%); }
+.dot-suppliers { background: hsl(35, 90%, 50%);  }
+.dot-public    { background: hsl(280, 55%, 45%); }
+
+/* ── CTA final ────────────────────────────────────────────── */
+.stakeholders-cta {
+    background: var(--text-main);
+    color: white;
+    text-align: center;
+    padding: var(--space-4) 0;
+}
+
+.stakeholders-cta h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.stakeholders-cta p {
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+}
