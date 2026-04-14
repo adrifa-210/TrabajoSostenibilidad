@@ -115,6 +115,23 @@ header.glass.mobile-nav-open .bar {
 .card-icon {
     font-size: 3rem;
     margin-bottom: 1.5rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+}
+
+.card-icon svg {
+    width: 3.5rem;
+    height: 3.5rem;
+    stroke-width: 1.5;
+    fill: none;
+    stroke: currentColor;
+    transition: var(--transition);
+}
+
+.card:hover .card-icon svg {
+    transform: scale(1.1) rotate(-5deg);
+    stroke: var(--accent);
 }
 
 /* Hero Visual Animation */
