@@ -80,14 +80,24 @@ function initCards() {
         "Colaboramos con centros de datos de PUE óptimo y neutros en carbono."
     ];
     
+    const cardIcons = [
+        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
+        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>`,
+        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>`,
+        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`
+    ];
+    
     sustainabilityData.pillars.forEach((pillar, index) => {
         const card = document.createElement('div');
         card.className = 'card-container kpi-card-wrapper';
         card.id = `card-pillar-${pillar.id}`;
-        card.style.height = '160px'; // Sobrescribe los 380px de components.css
+        card.style.height = '230px'; // Aumentado para acomodar el SVG estéticamente
         card.innerHTML = `
             <div class="card-inner">
                 <div class="card-front glass kpi-front">
+                    <div class="card-icon" style="margin-bottom: 0.5rem; transform: scale(0.85);">
+                        ${cardIcons[index]}
+                    </div>
                     <div class="kpi-title">${pillar.title}</div>
                     <div class="kpi-value-wrapper">
                         <span class="kpi-value" id="kpi-val-${pillar.id}">0</span>
@@ -96,7 +106,10 @@ function initCards() {
                     <div class="kpi-title" style="margin-top: 5px; font-size: 0.8rem">${pillar.kpi_name}</div>
                 </div>
                 <div class="card-back kpi-back">
-                    <p>${extraInfo[index]}</p>
+                    <div class="card-icon">
+                        ${cardIcons[index]}
+                    </div>
+                    <p style="position: relative; z-index: 2;">${extraInfo[index]}</p>
                 </div>
             </div>
         `;
