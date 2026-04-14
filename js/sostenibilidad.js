@@ -4,6 +4,7 @@
  */
 
 let sustainabilityData = null;
+let modalChartInstance = null;
 
 // Global Chart Instances
 let charts = {
@@ -48,9 +49,21 @@ function getDisplayMonthYear(index) {
 function initDashboard() {
     initCards();
     initCharts();
+    initModal();
     
     const slider = document.getElementById('year-slider');
     const yearDisplay = document.getElementById('current-year-display');
+    
+    // Calcular índice basado en la fecha actual (Ene 2024 es índice 0)
+    const now = new Date();
+    const startYear = 2024;
+    const yearDiff = now.getFullYear() - startYear;
+    let currentIndex = (yearDiff * 12) + now.getMonth();
+    
+    // Asegurar que estamos entre "Ene 2024" (0) y "Dic 2030" (83)
+    currentIndex = Math.max(0, Math.min(currentIndex, 83));
+    
+    slider.value = currentIndex;
     
     // Initial Render
     yearDisplay.textContent = getDisplayMonthYear(slider.value);
@@ -300,4 +313,93 @@ function updateCloudChart(index) {
     charts.cloud.data.datasets[0].backgroundColor = [color, colors.gray];
     charts.cloud.data.datasets[0].data = [efficiencyTarget, 100 - efficiencyTarget];
     charts.cloud.update();
+}
+
+// ---------------------------------------------------------
+// Modal Logic
+// ---------------------------------------------------------
+let currentModalChartType = null;
+
+function initModal() {
+    const modal = document.getElementById('chart-modal');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const modalSlider = document.getElementById('modal-year-slider');
+    const mainSlider = document.getElementById('year-slider');
+    const yearDisplay = document.getElementById('current-year-display');
+    
+    document.querySelectorAll('.chart-expand-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const chartKey = e.currentTarget.dataset.chart;
+            const title = e.currentTarget.closest('.chart-header').querySelector('h4').innerText;
+            openChartModal(chartKey, title);
+        });
+    });
+    
+    closeBtn.addEventListener('click', closeChartModal);
+    modal.addEventListener('click', (e) => {
+        if(e.target === modal) closeChartModal();
+    });
+    
+    // Sincronizar slider modal con slider principal
+    modalSlider.addEventListener('input', (e) => {
+        const val = e.target.value;
+        mainSlider.value = val;
+        yearDisplay.textContent = getDisplayMonthYear(val);
+        updateDashboard(val);
+        
+        if (modalChartInstance && currentModalChartType) {
+            const originalChart = charts[currentModalChartType];
+            modalChartInstance.data = JSON.parse(JSON.stringify(originalChart.data));
+            modalChartInstance.update();
+        }
+    });
+}
+
+function openChartModal(type, title) {
+    currentModalChartType = type;
+    const modal = document.getElementById('chart-modal');
+    document.getElementById('modal-title').innerText = title;
+    
+    const mainSlider = document.getElementById('year-slider');
+    document.getElementById('modal-year-slider').value = mainSlider.value;
+    
+    if(modalChartInstance) {
+        modalChartInstance.destroy();
+    }
+    
+    const ctx = document.getElementById('modalCanvas').getContext('2d');
+    const originalChart = charts[type];
+    
+    // Deep clone options
+    const newConfig = {
+        type: originalChart.config.type,
+        data: JSON.parse(JSON.stringify(originalChart.config.data)),
+        options: JSON.parse(JSON.stringify(originalChart.config.options))
+    };
+    
+    // Override purely visual configurations for modal
+    newConfig.options.responsive = true;
+    newConfig.options.maintainAspectRatio = false;
+    
+    if (newConfig.options.plugins && newConfig.options.plugins.legend) {
+        newConfig.options.plugins.legend.display = true; 
+        newConfig.options.plugins.legend.position = 'bottom';
+        newConfig.options.plugins.legend.labels = {
+            font: { size: 14 }
+        };
+    }
+    
+    if(newConfig.type === 'doughnut') {
+        newConfig.options.cutout = '60%'; // Bigger rings in fullscreen
+    }
+
+    modalChartInstance = new Chart(ctx, newConfig);
+    
+    // Mostrar modal con un pequeño retraso para prevenir glitches de canvas
+    requestAnimationFrame(() => modal.classList.add('active'));
+}
+
+function closeChartModal() {
+    document.getElementById('chart-modal').classList.remove('active');
+    currentModalChartType = null;
 }

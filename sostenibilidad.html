@@ -91,8 +91,13 @@
                     <!-- Chart 1 -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
-                            <h4><span class="ods-badge ods-7-13">ODS 7 & 13</span> Energía e Infraestructura</h4>
-                            <p class="chart-desc">Consumo de Energía Renovable vs Emisiones.</p>
+                            <div class="chart-header-info">
+                                <h4><span class="ods-badge ods-7-13">ODS 7 & 13</span> Energía e Infraestructura</h4>
+                                <p class="chart-desc">Consumo de Energía Renovable vs Emisiones.</p>
+                            </div>
+                            <button class="btn-icon chart-expand-btn" data-chart="energy" aria-label="Ampliar Gráfico" title="Ampliar Gráfico">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </button>
                         </div>
                         <div class="canvas-wrapper">
                             <canvas id="chartEnergy"></canvas>
@@ -105,8 +110,13 @@
                     <!-- Chart 2 -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
-                            <h4><span class="ods-badge ods-12">ODS 12</span> Economía Circular</h4>
-                            <p class="chart-desc">Equipos reacondicionados e índice de reciclaje.</p>
+                            <div class="chart-header-info">
+                                <h4><span class="ods-badge ods-12">ODS 12</span> Economía Circular</h4>
+                                <p class="chart-desc">Equipos reacondicionados e índice de reciclaje.</p>
+                            </div>
+                            <button class="btn-icon chart-expand-btn" data-chart="circular" aria-label="Ampliar Gráfico" title="Ampliar Gráfico">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </button>
                         </div>
                         <div class="canvas-wrapper">
                             <canvas id="chartCircular"></canvas>
@@ -119,8 +129,13 @@
                     <!-- Chart 3 -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
-                            <h4><span class="ods-badge ods-11-13">ODS 11 & 13</span> Movilidad Inteligente</h4>
-                            <p class="chart-desc">Electrificación y Rutas IA vs Emisiones.</p>
+                            <div class="chart-header-info">
+                                <h4><span class="ods-badge ods-11-13">ODS 11 & 13</span> Movilidad Inteligente</h4>
+                                <p class="chart-desc">Electrificación y Rutas IA vs Emisiones.</p>
+                            </div>
+                            <button class="btn-icon chart-expand-btn" data-chart="mobility" aria-label="Ampliar Gráfico" title="Ampliar Gráfico">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </button>
                         </div>
                         <div class="canvas-wrapper">
                             <canvas id="chartMobility"></canvas>
@@ -133,8 +148,13 @@
                     <!-- Chart 4 -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
-                            <h4><span class="ods-badge ods-9-17">ODS 9 & 17</span> Green Cloud</h4>
-                            <p class="chart-desc">Optimización del PUE de proveedores.</p>
+                            <div class="chart-header-info">
+                                <h4><span class="ods-badge ods-9-17">ODS 9 & 17</span> Green Cloud</h4>
+                                <p class="chart-desc">Optimización del PUE de proveedores.</p>
+                            </div>
+                            <button class="btn-icon chart-expand-btn" data-chart="cloud" aria-label="Ampliar Gráfico" title="Ampliar Gráfico">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+                            </button>
                         </div>
                         <div class="canvas-wrapper">
                             <canvas id="chartCloud"></canvas>
@@ -167,6 +187,36 @@
             <p>&copy; 2026 InforFix S.L. Comprometidos con el desarrollo tecnológico sostenible.</p>
         </div>
     </footer>
+
+    <!-- Modal Fullscreen Graphic -->
+    <div id="chart-modal" class="chart-modal-overlay">
+        <div class="chart-modal-content glass-box">
+            <div class="modal-header">
+                <h3 id="modal-title">Gráfico</h3>
+                <button class="btn-icon" id="close-modal-btn" aria-label="Cerrar modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="canvas-modal-wrapper">
+                <canvas id="modalCanvas"></canvas>
+            </div>
+            
+            <div class="modal-time-control mt-4">
+                <div class="slider-container">
+                    <input type="range" min="0" max="83" value="0" class="sustainability-slider" id="modal-year-slider">
+                    <div class="slider-labels">
+                        <span>2024</span>
+                        <span>2025</span>
+                        <span>2026</span>
+                        <span>2027</span>
+                        <span>2028</span>
+                        <span>2029</span>
+                        <span>2030</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
