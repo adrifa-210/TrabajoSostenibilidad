@@ -19,7 +19,7 @@ header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 1rem 2.5rem;
 }
 
 .nav-links {
@@ -49,6 +49,14 @@ header nav {
 }
 
 @media (max-width: 968px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+    
+    header nav {
+        padding: 1rem 1.5rem;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;

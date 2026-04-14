@@ -1,41 +1,45 @@
 /* DESIGN SYSTEM - main.css */
 :root {
     /* Color Palette - InforFix Tech-Eco Theme (HSL) */
-    --primary-h: 215; /* Tech Blue */
+    --primary-h: 215;
+    /* Tech Blue */
     --primary-s: 70%;
     --primary-l: 45%;
     --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
-    
-    --eco-h: 142; /* Eco Green */
+
+    --eco-h: 142;
+    /* Eco Green */
     --eco-s: 60%;
     --eco-l: 45%;
     --eco: hsl(var(--eco-h), var(--eco-s), var(--eco-l));
-    
+
     --accent-h: 180;
     --accent: hsl(var(--accent-h), 80%, 40%);
-    
+
     --text-main: hsl(210, 25%, 12%);
     --text-muted: hsl(210, 10%, 40%);
     --bg-white: hsl(0, 0%, 100%);
     --bg-light: hsl(215, 20%, 97%);
-    
+
     /* Shadows & Glassmorphism */
     --shadow-soft: 0 10px 30px -10px hsla(var(--primary-h), 50%, 20%, 0.1);
     --glass-bg: hsla(0, 0%, 100%, 0.7);
     --glass-border: hsla(0, 0%, 100%, 0.2);
-    
+
     /* Spacing */
     --space-1: 0.5rem;
     --space-2: 1rem;
     --space-3: 2rem;
     --space-4: 4rem;
-    
+
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Reset & Base Styles */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -53,9 +57,17 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, .logo {
+h1,
+h2,
+h3,
+.logo {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
+}
+
+.logo {
+    font-size: 1.8rem;
+    letter-spacing: -1px;
 }
 
 ul {
@@ -80,8 +92,13 @@ img {
     -webkit-text-fill-color: transparent;
 }
 
-.text-center { text-align: center; }
-.mt-4 { margin-top: 4rem; }
+.text-center {
+    text-align: center;
+}
+
+.mt-4 {
+    margin-top: 4rem;
+}
 
 .section-title {
     font-size: clamp(2rem, 5vw, 3rem);
