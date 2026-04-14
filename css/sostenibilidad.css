@@ -75,21 +75,30 @@
     margin-bottom: 2rem;
 }
 
-.kpi-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    text-align: center;
-    box-shadow: var(--shadow-soft);
+.kpi-card-wrapper {
+    animation: slideUpFade 0.5s ease-out forwards;
+    transition: transform 0.3s ease;
+    /* Evita que tape el resto al hacer scale */
+    transform-style: preserve-3d;
+}
+
+.kpi-front, .kpi-back {
+    border-radius: 12px !important;
+    padding: 1rem 1.5rem !important;
+}
+
+.kpi-front {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transition: transform 0.3s ease;
 }
 
-.kpi-card:hover {
-    transform: translateY(-5px);
+.kpi-back p {
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: center;
 }
 
 .kpi-title {

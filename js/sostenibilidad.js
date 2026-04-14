@@ -68,17 +68,32 @@ function initCards() {
     const container = document.getElementById('kpi-cards-container');
     container.innerHTML = '';
     
-    sustainabilityData.pillars.forEach(pillar => {
+    const extraInfo = [
+        "Avanzamos hacia el autoconsumo total y una máxima eficiencia energética.",
+        "Apostamos por extender la vida útil tecnológica y potenciar el reciclaje.",
+        "Transformamos la logística con flota verde y rutas optimizadas por IA.",
+        "Colaboramos con centros de datos de PUE óptimo y neutros en carbono."
+    ];
+    
+    sustainabilityData.pillars.forEach((pillar, index) => {
         const card = document.createElement('div');
-        card.className = 'kpi-card';
+        card.className = 'card-container kpi-card-wrapper';
         card.id = `card-pillar-${pillar.id}`;
+        card.style.height = '160px'; // Sobrescribe los 380px de components.css
         card.innerHTML = `
-            <div class="kpi-title">${pillar.title}</div>
-            <div class="kpi-value-wrapper">
-                <span class="kpi-value" id="kpi-val-${pillar.id}">0</span>
-                <span class="kpi-unit">${pillar.kpi_unit}</span>
+            <div class="card-inner">
+                <div class="card-front glass kpi-front">
+                    <div class="kpi-title">${pillar.title}</div>
+                    <div class="kpi-value-wrapper">
+                        <span class="kpi-value" id="kpi-val-${pillar.id}">0</span>
+                        <span class="kpi-unit">${pillar.kpi_unit}</span>
+                    </div>
+                    <div class="kpi-title" style="margin-top: 5px; font-size: 0.8rem">${pillar.kpi_name}</div>
+                </div>
+                <div class="card-back kpi-back">
+                    <p>${extraInfo[index]}</p>
+                </div>
             </div>
-            <div class="kpi-title" style="margin-top: 5px; font-size: 0.8rem">${pillar.kpi_name}</div>
         `;
         container.appendChild(card);
     });
@@ -96,7 +111,7 @@ function updateDashboard(index) {
     });
 
     // Animate Cards
-    document.querySelectorAll('.kpi-card').forEach(el => {
+    document.querySelectorAll('.kpi-card-wrapper').forEach(el => {
         el.style.transform = 'scale(1.02)';
         setTimeout(() => el.style.transform = 'none', 150);
     });
