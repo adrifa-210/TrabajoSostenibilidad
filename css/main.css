@@ -26,11 +26,22 @@
     --glass-bg: hsla(0, 0%, 100%, 0.7);
     --glass-border: hsla(0, 0%, 100%, 0.2);
 
-    /* Spacing */
+    /* Typography - Responsive */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Responsive Heading Sizes */
+    --fs-h1: clamp(2.5rem, 8vw, 4.5rem);
+    --fs-h2: clamp(2rem, 6vw, 3rem);
+    --fs-h3: clamp(1.5rem, 4vw, 2rem);
+    --fs-body: clamp(1rem, 2vw, 1.125rem);
+    
+    /* Spacing - Responsive */
     --space-1: 0.5rem;
     --space-2: 1rem;
     --space-3: 2rem;
-    --space-4: 4rem;
+    --space-4: clamp(3rem, 10vw, 6rem);
+    --space-5: clamp(5rem, 15vw, 10rem);
 
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -50,22 +61,44 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     color: var(--text-main);
     background-color: var(--bg-white);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-.logo {
-    font-family: 'Outfit', sans-serif;
+h1 {
+    font-size: var(--fs-h1);
     font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-family: var(--font-heading);
+}
+
+h2 {
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: var(--font-heading);
+}
+
+h3 {
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    font-family: var(--font-heading);
+}
+
+p {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    font-size: var(--fs-body);
 }
 
 .logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
     font-size: 1.8rem;
     letter-spacing: -1px;
 }

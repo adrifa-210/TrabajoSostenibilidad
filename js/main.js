@@ -55,9 +55,11 @@ function initMobileMenu() {
     const navLinks = document.querySelector('.nav-links');
 
     if (toggle && navLinks) {
+        const header = document.getElementById('main-header');
         toggle.addEventListener('click', () => {
             navLinks.classList.toggle('mobile-active');
             toggle.classList.toggle('is-active');
+            header.classList.toggle('mobile-nav-open');
         });
     }
 }

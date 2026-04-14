@@ -18,10 +18,27 @@ header.glass {
     z-index: 1000;
     border-radius: 100px;
     width: clamp(300px, 90%, 1100px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modal Open State */
+header.glass.mobile-nav-open {
+    background: rgba(10, 15, 25, 0.95); /* Dark premium glass */
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+header.glass.mobile-nav-open .logo span {
+    color: white; /* Invert logo for dark menu */
+}
+
+header.glass.mobile-nav-open .bar {
+    background-color: white; /* Invert toggle for dark menu */
 }
 
 .mobile-menu-toggle {
-    display: none; /* Hidden on desktop */
+    display: none;
     flex-direction: column;
     gap: 6px;
     background: transparent;
@@ -41,15 +58,11 @@ header.glass {
 
 /* Active state for hamburger to X morph */
 .mobile-menu-toggle.is-active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(4px) rotate(45deg);
 }
 
 .mobile-menu-toggle.is-active .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-menu-toggle.is-active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-4px) rotate(-45deg);
 }
 
 /* Buttons */
@@ -86,7 +99,7 @@ header.glass {
 
 /* Cards */
 .card {
-    padding: 2.5rem;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
     border-radius: 24px;
     background: var(--bg-white);
     transition: var(--transition);
@@ -106,13 +119,14 @@ header.glass {
 
 /* Hero Visual Animation */
 .hero-visual {
-    height: 400px;
+    height: clamp(300px, 50vh, 400px);
     border-radius: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     position: relative;
+    width: 100%;
 }
 
 .blob {
@@ -207,12 +221,12 @@ header.glass {
 
 .diagnosis-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+    gap: 1.5rem;
 }
 
 .diagnosis-item {
-    padding: 2rem;
+    padding: 1.5rem;
     border-left: 4px solid var(--eco);
     background: rgba(255, 255, 255, 0.05);
     border-radius: 0 16px 16px 0;
@@ -257,4 +271,51 @@ header.glass {
     border-radius: 20px;
     padding: 2rem;
     border: 1px solid var(--glass-border);
+}
+
+/* Responsive Overrides */
+@media (max-width: 968px) {
+    .nav-links.mobile-active {
+        display: flex;
+        padding: 2rem 0 1rem 0;
+    }
+
+    .nav-links.mobile-active li {
+        opacity: 0;
+        transform: translateY(15px);
+        animation: slideInUp 0.4s ease forwards;
+    }
+
+    .nav-links.mobile-active li:nth-child(1) { animation-delay: 0.1s; }
+    .nav-links.mobile-active li:nth-child(2) { animation-delay: 0.2s; }
+    .nav-links.mobile-active li:nth-child(3) { animation-delay: 0.3s; }
+    .nav-links.mobile-active li:nth-child(4) { animation-delay: 0.4s; }
+
+    .nav-links.mobile-active a {
+        font-size: 1.5rem;
+        color: white;
+        font-weight: 600;
+    }
+
+    @keyframes slideInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .mobile-menu-toggle {
+        display: flex !important; /* Ensure visibility */
+    }
+
+    .diagnosis-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .col-3, .col-2 {
+        grid-template-columns: 1fr !important;
+    }
+
+    .hero-visual {
+        height: 300px;
+    }
 }
