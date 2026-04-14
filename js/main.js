@@ -17,8 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 function initCardFlip() {
     const observerOptions = {
         root: null,
-        rootMargin: '-10% 0px -10% 0px', // Slightly larger margin
-        threshold: 0.3 // More lenient threshold
+        rootMargin: '-45% 0px -45% 0px', // Solo el 10% central de la pantalla
+        threshold: 0 // Intersecta en cuanto la tarjeta toque esa franja central
     };
 
     const flipObserver = new IntersectionObserver((entries) => {

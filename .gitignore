@@ -20,3 +20,6 @@ Thumbs.db
 # Build output
 dist/
 build/
+
+# IA
+Implementation_plan.md

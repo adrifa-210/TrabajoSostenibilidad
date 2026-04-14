@@ -71,7 +71,6 @@
 
 /* KPI Cards */
 .kpi-cards-grid {
-    grid-template-columns: repeat(2, 1fr);
     margin-bottom: 2rem;
 }
 
@@ -196,17 +195,9 @@
     animation: slideUpFade 0.5s ease-out forwards;
 }
 
-/* Responsive */
-@media (max-width: 968px) {
-    .charts-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* Eliminado el media query redundante ya que layout.css se encarga globalmente de .col-2 y .col-4 al bajar de 968px */
 
 @media (max-width: 576px) {
-    .kpi-cards-grid {
-        grid-template-columns: 1fr;
-    }
     .year-display {
         font-size: 2rem;
     }

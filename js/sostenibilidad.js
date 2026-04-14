@@ -56,6 +56,11 @@ function initDashboard() {
     yearDisplay.textContent = getDisplayMonthYear(slider.value);
     updateDashboard(slider.value);
     
+    // Refresh mobile flip observers for newly injected cards
+    if(typeof initCardFlip === 'function') {
+        initCardFlip();
+    }
+    
     // Listen for slider changes
     slider.addEventListener('input', (e) => {
         const index = parseInt(e.target.value, 10);
