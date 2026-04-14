@@ -7,7 +7,23 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
     initMobileMenu();
     initSmoothScroll();
+    initParallax();
 });
+
+/**
+ * Smooth Parallax Effect for Hero Background
+ */
+function initParallax() {
+    const heroBg = document.querySelector('.hero-bg-wrapper');
+    if (!heroBg) return;
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        // Parallax factor: 0.4 (Adjust for more/less movement)
+        const val = scrolled * 0.8;
+        heroBg.style.transform = `translate(-50%, calc(-50% + ${val}px))`;
+    });
+}
 
 /**
  * Basic intersection observer for reveal animations
@@ -55,7 +71,7 @@ function initSmoothScroll() {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId === '#') return;
-            
+
             const target = document.querySelector(targetId);
             if (target) {
                 e.preventDefault();

@@ -6,6 +6,11 @@
     margin: 0 auto;
 }
 
+main {
+    margin: 0;
+    padding: 0;
+}
+
 .section {
     padding: var(--space-4) 0;
 }
@@ -13,17 +18,32 @@
 .hero {
     position: relative;
     overflow: hidden;
+    padding-top: 10rem; /* Space for fixed header */
+}
+
+/* Seamless transition to next section */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; /* Slight overlap to prevent 1px lines */
+    left: 0;
+    width: 100%;
+    height: 20rem; /* Very tall fade for maximum smoothness */
+    background: linear-gradient(to bottom, transparent, var(--bg-light));
+    pointer-events: none;
+    z-index: 1;
 }
 
 .hero-bg-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 120%;
-    height: 120%;
+    width: 140%; /* Wider bleed for parallax */
+    height: 150%; /* Taller bleed for parallax scroll */
     transform: translate(-50%, -50%);
     z-index: -1;
     pointer-events: none;
+    will-change: transform; /* Performance optimization */
 }
 
 .hero-bg-img {
@@ -73,7 +93,7 @@ header nav {
     gap: 4rem;
     min-height: 80vh;
     position: relative;
-    z-index: 1;
+    z-index: 2; /* Over the fade overlay */
 }
 
 @media (max-width: 968px) {
@@ -91,9 +111,26 @@ header nav {
         gap: 2rem;
     }
 
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
     .nav-links {
         display: none;
-        /* Mobile menu logic in JS */
+        flex-direction: column;
+        width: 100%;
+        padding: 1.5rem 0;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .nav-links.mobile-active {
+        display: flex; /* Show when active */
+    }
+
+    /* Adjust header shape for mobile menu */
+    header.glass:has(.mobile-active) {
+        border-radius: 30px;
     }
 }
 

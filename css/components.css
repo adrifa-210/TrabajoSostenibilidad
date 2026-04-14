@@ -10,16 +10,46 @@
 }
 
 header.glass {
-    position: sticky;
-    top: 1rem;
+    position: fixed;
+    top: 1.5rem;
+    /* Floating pill */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
-    margin: 1rem auto;
+    border-radius: 100px;
     width: clamp(300px, 90%, 1100px);
-    /* Fully transparent background */
+}
+
+.mobile-menu-toggle {
+    display: none; /* Hidden on desktop */
+    flex-direction: column;
+    gap: 6px;
     background: transparent;
     border: none;
-    box-shadow: none;
-    backdrop-filter: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1100;
+}
+
+.mobile-menu-toggle .bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+/* Active state for hamburger to X morph */
+.mobile-menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Buttons */
@@ -96,10 +126,55 @@ header.glass {
 }
 
 @keyframes morph {
-    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
-    34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-    67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
-    100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    0% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+
+    34% {
+        border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+    }
+
+    67% {
+        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+    }
+
+    100% {
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+}
+
+.hero-card-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding: 0;
+    filter: brightness(0.9) blur(3px);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                filter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1;
+}
+
+.hero-visual:hover .hero-card-img {
+    transform: scale(1.1);
+    filter: brightness(1.05) blur(0);
+}
+
+.hero-center-btn {
+    position: relative;
+    z-index: 2;
+    transition: var(--transition);
+    background: white;
+    color: var(--primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.hero-visual:hover .hero-center-btn {
+    transform: scale(1.05);
+    background: var(--primary);
+    color: white;
 }
 
 /* Nav Items */
@@ -155,7 +230,9 @@ header.glass {
     font-size: 1.25rem;
 }
 
-.border-eco { border-color: var(--eco); }
+.border-eco {
+    border-color: var(--eco);
+}
 
 /* Infrastructure List */
 .infra-list {
@@ -180,16 +257,4 @@ header.glass {
     border-radius: 20px;
     padding: 2rem;
     border: 1px solid var(--glass-border);
-}
-
-.hero-badge {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    background: var(--primary);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.8rem;
 }
