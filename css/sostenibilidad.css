@@ -1,7 +1,7 @@
 /* css/sostenibilidad.css */
 
 .sustainability-hero {
-    padding-top: var(--space-5);
+    padding-top: 10rem; /* Espacio fijo para el header, igual que en hero de main */
     padding-bottom: var(--space-4);
 }
 
