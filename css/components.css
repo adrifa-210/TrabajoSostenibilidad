@@ -1,0 +1,121 @@
+/* COMPONENTS - components.css */
+
+/* Glassmorphism Effect */
+.glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+}
+
+header.glass {
+    position: sticky;
+    top: 1rem;
+    z-index: 1000;
+    margin: 1rem auto;
+    border-radius: 100px;
+    width: clamp(300px, 90%, 1100px);
+}
+
+/* Buttons */
+.btn {
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    box-shadow: 0 4px 15px hsla(var(--primary-h), 50%, 40%, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px hsla(var(--primary-h), 50%, 40%, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-light);
+}
+
+/* Cards */
+.card {
+    padding: 2.5rem;
+    border-radius: 24px;
+    background: var(--bg-white);
+    transition: var(--transition);
+}
+
+.glass-hover:hover {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-soft);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Hero Visual Animation */
+.hero-visual {
+    height: 400px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.blob {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    animation: morph 8s ease-in-out infinite;
+    filter: blur(40px);
+    opacity: 0.6;
+}
+
+@keyframes morph {
+    0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+    34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+    67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+    100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+}
+
+/* Nav Items */
+.nav-item {
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}

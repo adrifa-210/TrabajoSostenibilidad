@@ -1,0 +1,97 @@
+/* DESIGN SYSTEM - main.css */
+:root {
+    /* Color Palette - Sustainability Theme (HSL) */
+    --primary-h: 142;
+    --primary-s: 70%;
+    --primary-l: 45%;
+    --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --primary-light: hsl(var(--primary-h), var(--primary-s), 95%);
+    --primary-dark: hsl(var(--primary-h), var(--primary-s), 25%);
+    
+    --accent-h: 180;
+    --accent: hsl(var(--accent-h), 80%, 40%);
+    
+    --text-main: hsl(210, 20%, 15%);
+    --text-muted: hsl(210, 10%, 45%);
+    --bg-white: hsl(0, 0%, 100%);
+    --bg-light: hsl(142, 20%, 98%);
+    
+    /* Shadows & Glassmorphism */
+    --shadow-soft: 0 10px 30px -10px hsla(var(--primary-h), 50%, 20%, 0.1);
+    --glass-bg: hsla(0, 0%, 100%, 0.7);
+    --glass-border: hsla(0, 0%, 100%, 0.2);
+    
+    /* Spacing */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 2rem;
+    --space-4: 4rem;
+    
+    /* Transitions */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Typography Utilities */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-center { text-align: center; }
+.mt-4 { margin-top: 4rem; }
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.accent {
+    color: var(--primary);
+}
