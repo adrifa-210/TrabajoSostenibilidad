@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InforFix | Simulador de Sostenibilidad 2030</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Portal de sostenibilidad InforFix 2030. Descubre nuestra hoja de ruta interactiva hacia la neutralidad de carbono, economía circular y Cloud verde.">
+    <meta name="keywords"
+        content="sostenibilidad, InforFix, Green Cloud, economía circular, simulador 2030, neutralidad de carbono">
+    <meta name="author" content="InforFix Digital">
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/sostenibilidad.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header id="main-header" class="glass">
+        <nav class="container">
+            <div class="mobile-top-bar">
+                <div class="logo">
+                    <a href="index.html"><span class="gradient-text">InforFix</span></a>
+                </div>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#services" class="nav-item">Servicios</a></li>
+                <li><a href="index.html#infra" class="nav-item">Infraestructura</a></li>
+                <li><a href="sostenibilidad.html" class="nav-item" style="color:var(--eco)">Sostenibilidad</a></li>
+                <li><a href="index.html#contact" class="btn btn-primary">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section sustainability-hero bg-dark text-white text-center">
+            <div class="container fade-in">
+                <h1 class="reveal-text">Portal de <span style="color:var(--eco)">Sostenibilidad</span> 2030</h1>
+                <p class="section-subtitle mt-4 mx-auto" style="max-width: 800px;">
+                    Bienvenido a nuestra máquina del tiempo en favor del medio ambiente. Nuestra ambición: Operar con energía 100% renovable, infraestructura "Green Cloud" y un ciclo de vida completamente circular para 2030.
+                </p>
+            </div>
+        </section>
+
+        <!-- Interactive Dashboard -->
+        <section class="section interactive-dashboard">
+            <div class="container">
+                <!-- 1. Slider de Control -->
+                <div class="time-control-wrapper glass-box fade-in">
+                    <h3 class="text-center">Viaje al Futuro: <span id="current-year-display" class="accent year-display">2024</span></h3>
+                    <div class="slider-container mt-4">
+                        <input type="range" id="year-slider" min="2024" max="2030" value="2024" step="1" class="sustainability-slider" aria-label="Control de año">
+                        <div class="slider-labels">
+                            <span>2024 (Línea Base)</span>
+                            <span>2027</span>
+                            <span>2030 (Meta)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Sección de Resumen (Cards) -->
+                <div class="kpi-cards-grid grid col-4 gap-2 mt-4 fade-in" id="kpi-cards-container">
+                    <!-- Cards will be injected by JS -->
+                </div>
+
+                <!-- 3. Sección de Detalles y Gráficos -->
+                <div class="charts-grid grid col-2 gap-4 mt-4 fade-in">
+                    <!-- Chart 1 -->
+                    <div class="chart-card glass-box">
+                        <div class="chart-header">
+                            <h4><span class="ods-badge ods-7-13">ODS 7 & 13</span> Energía e Infraestructura</h4>
+                            <p class="chart-desc">Consumo de Energía Renovable vs Emisiones.</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas id="chartEnergy"></canvas>
+                        </div>
+                        <div id="detail-1" class="pillar-detail">
+                            <p>Transición hacia el autoconsumo mediante instalación de paneles solares y eficiencia en nuestras sedes de Granada.</p>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2 -->
+                    <div class="chart-card glass-box">
+                        <div class="chart-header">
+                            <h4><span class="ods-badge ods-12">ODS 12</span> Economía Circular</h4>
+                            <p class="chart-desc">Equipos reacondicionados e índice de reciclaje.</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas id="chartCircular"></canvas>
+                        </div>
+                         <div id="detail-2" class="pillar-detail">
+                            <p>Maximizamos la vida útil del hardware (InforFix Re-Tech) y garantizamos el reciclaje certificado de componentes.</p>
+                        </div>
+                    </div>
+
+                    <!-- Chart 3 -->
+                    <div class="chart-card glass-box">
+                        <div class="chart-header">
+                            <h4><span class="ods-badge ods-11-13">ODS 11 & 13</span> Movilidad Inteligente</h4>
+                            <p class="chart-desc">Electrificación y Rutas IA vs Emisiones.</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas id="chartMobility"></canvas>
+                        </div>
+                         <div id="detail-3" class="pillar-detail">
+                            <p>Transición agresiva de la flota a modelos cero emisiones y optimización constante del trazado logístico con Inteligencia Artificial.</p>
+                        </div>
+                    </div>
+
+                    <!-- Chart 4 -->
+                    <div class="chart-card glass-box">
+                        <div class="chart-header">
+                            <h4><span class="ods-badge ods-9-17">ODS 9 & 17</span> Green Cloud</h4>
+                            <p class="chart-desc">Optimización del PUE de proveedores.</p>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas id="chartCloud"></canvas>
+                        </div>
+                         <div id="detail-4" class="pillar-detail">
+                            <p>Alianzas con proveedores que certifican un uso eficiente de la energía (PUE) y neutralidad de carbono demostrable.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <span class="logo gradient-text">InforFix</span>
+                <p>Reparación, Digitalización y Futuro Sostenible.<br>Granada, España.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Ética Digital</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 InforFix S.L. Comprometidos con el desarrollo tecnológico sostenible.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/sostenibilidad.js"></script>
+</body>
+
+</html>
