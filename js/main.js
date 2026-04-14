@@ -8,7 +8,38 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initSmoothScroll();
     initParallax();
+    initCardFlip();
 });
+
+/**
+ * Mobile Scroll-Triggered Card Flip
+ */
+function initCardFlip() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '-10% 0px -10% 0px', // Slightly larger margin
+        threshold: 0.3 // More lenient threshold
+    };
+
+    const flipObserver = new IntersectionObserver((entries) => {
+        // Only trigger automatic flip on mobile viewports
+        if (window.innerWidth >= 968) return;
+
+        entries.forEach(entry => {
+            const cardInner = entry.target.querySelector('.card-inner');
+            if (!cardInner) return;
+
+            if (entry.isIntersecting) {
+                cardInner.classList.add('is-flipped');
+            } else {
+                cardInner.classList.remove('is-flipped');
+            }
+        });
+    }, observerOptions);
+
+    const cards = document.querySelectorAll('.card-container');
+    cards.forEach(card => flipObserver.observe(card));
+}
 
 /**
  * Smooth Parallax Effect for Hero Background

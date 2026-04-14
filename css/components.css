@@ -97,19 +97,90 @@ header.glass.mobile-nav-open .bar {
     background: var(--primary-light);
 }
 
-/* Cards */
-.card {
-    padding: clamp(1.5rem, 5vw, 2.5rem);
-    border-radius: 24px;
-    background: var(--bg-white);
-    transition: var(--transition);
+/* 3D Flip Cards */
+.card-container {
+    perspective: 1500px;
+    height: 380px; /* Fixed height for 3D stability */
+    width: 100%;
 }
 
-.glass-hover:hover {
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    transform: translateY(-8px);
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Hover on desktop, .is-flipped for mobile JS */
+.card-container:hover .card-inner,
+.card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem;
     box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+.card-front {
+    /* Restore Glass Style */
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    transform: translateZ(1px); /* Position in front */
+}
+
+.card-back {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    transform: rotateY(180deg) translateZ(1px); /* Position in back relative to inner */
+    padding: 2rem;
+}
+
+.card-back {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    transform: rotateY(180deg) translateZ(1px);
+    padding: 2rem;
+}
+
+.card-back .card-icon {
+    opacity: 0.2;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    transform: scale(3) rotate(-15deg);
+    color: white;
+}
+
+.card-back .card-icon svg {
+    stroke: white;
+}
+
+.card-back h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.card-back p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .card-icon {
@@ -118,18 +189,22 @@ header.glass.mobile-nav-open .bar {
     color: var(--primary);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .card-icon svg {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px;
+    min-height: 48px;
+    display: block;
     stroke-width: 1.5;
     fill: none;
     stroke: currentColor;
     transition: var(--transition);
 }
 
-.card:hover .card-icon svg {
+.card-container:hover .card-front .card-icon svg {
     transform: scale(1.1) rotate(-5deg);
     stroke: var(--accent);
 }
