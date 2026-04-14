@@ -178,6 +178,9 @@
 }
 
 /* Orange & Dark Blue */
+.ods-4-5-8 {
+    background: linear-gradient(135deg, #C5192D, #FF3A21, #A21942); /* Rojo ODS 4, Naranja ODS 5, Granate ODS 8 */
+}
 
 .chart-desc {
     font-size: 0.85rem;
@@ -254,10 +257,9 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(10, 15, 25, 0.85);
-    /* Tema oscuro para modal fullscreen */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     z-index: 9999;
     display: flex;
     justify-content: center;

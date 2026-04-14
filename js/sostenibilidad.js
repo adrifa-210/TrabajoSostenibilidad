@@ -11,7 +11,8 @@ let charts = {
     energy: null,
     circular: null,
     mobility: null,
-    cloud: null
+    cloud: null,
+    social: null
 };
 
 // Global Colors based on CSS variables
@@ -90,14 +91,16 @@ function initCards() {
         "Avanzamos hacia el autoconsumo total y una máxima eficiencia energética.",
         "Apostamos por extender la vida útil tecnológica y potenciar el reciclaje.",
         "Transformamos la logística con flota verde y rutas optimizadas por IA.",
-        "Colaboramos con centros de datos de PUE óptimo y neutros en carbono."
+        "Colaboramos con centros de datos de PUE óptimo y neutros en carbono.",
+        "Promovemos la igualdad, conciliación y alfabetización digital en Granada."
     ];
     
     const cardIcons = [
         `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
         `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>`,
         `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>`,
-        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`
+        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`,
+        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`
     ];
     
     sustainabilityData.pillars.forEach((pillar, index) => {
@@ -152,6 +155,7 @@ function updateDashboard(index) {
     updateCircularChart(index);
     updateMobilityChart(index);
     updateCloudChart(index);
+    updateSocialChart(index);
 }
 
 // ---------------------------------------------------------
@@ -270,6 +274,57 @@ function initCharts() {
             }
         }
     });
+
+    // 5. Social (Bar - % Formación + Horas/Empleado dual axis)
+    const ctxSocial = document.getElementById('chartSocial').getContext('2d');
+    charts.social = new Chart(ctxSocial, {
+        type: 'bar',
+        data: {
+            labels: [initialLabel],
+            datasets: [
+                {
+                    label: '% Formación',
+                    data: [0],
+                    backgroundColor: 'hsla(340, 82%, 44%, 0.75)',
+                    borderColor: '#C5192D',
+                    borderWidth: 1,
+                    yAxisID: 'y'
+                },
+                {
+                    label: 'h/empleado',
+                    data: [0],
+                    backgroundColor: 'hsla(216, 70%, 45%, 0.75)',
+                    borderColor: 'hsl(215, 70%, 45%)',
+                    borderWidth: 1,
+                    yAxisID: 'y1',
+                    type: 'line',
+                    tension: 0.4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    position: 'left',
+                    title: { display: true, text: '%' }
+                },
+                y1: {
+                    beginAtZero: true,
+                    max: 50,
+                    position: 'right',
+                    grid: { drawOnChartArea: false },
+                    title: { display: true, text: 'h/emp' }
+                }
+            },
+            plugins: {
+                legend: { display: true, position: 'bottom' }
+            }
+        }
+    });
 }
 
 // ---------------------------------------------------------
@@ -313,6 +368,18 @@ function updateCloudChart(index) {
     charts.cloud.data.datasets[0].backgroundColor = [color, colors.gray];
     charts.cloud.data.datasets[0].data = [efficiencyTarget, 100 - efficiencyTarget];
     charts.cloud.update();
+}
+
+function updateSocialChart(index) {
+    const labels  = getMonthsUpTo(index);
+    const pillar  = sustainabilityData.pillars[4];
+    const dataset1 = labels.map(key => pillar.data[key]);
+    const dataset2 = labels.map(key => pillar.sec_data[key]);
+
+    charts.social.data.labels = labels;
+    charts.social.data.datasets[0].data = dataset1;
+    charts.social.data.datasets[1].data = dataset2;
+    charts.social.update();
 }
 
 // ---------------------------------------------------------
