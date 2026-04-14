@@ -1,56 +1,9 @@
 /**
  * sustainability.js
- * Lógica interactiva para Simulador InforFix 2030
+ * Lógica interactiva para Simulador InforFix 2030 (Separado en JSON, meses/años)
  */
 
-const sustainabilityData = {
-    "company": "InforFix",
-    "location": "Granada, España",
-    "baseline_year": 2024,
-    "target_year": 2030,
-    "pillars": [
-        {
-            "id": 1,
-            "title": "Energía",
-            "kpi_name": "Consumo Renovable",
-            "kpi_unit": "%",
-            "data": { "2024": 0, "2025": 15, "2026": 30, "2027": 45, "2028": 60, "2029": 80, "2030": 100 },
-            "sec_name": "Emisiones Alcance 2",
-            "sec_unit": "tCO2e",
-            "sec_data": { "2024": 120, "2025": 105, "2026": 85, "2027": 65, "2028": 40, "2029": 20, "2030": 0 }
-        },
-        {
-            "id": 2,
-            "title": "Economía Circular",
-            "kpi_name": "Tasa de Reciclaje",
-            "kpi_unit": "%",
-            "data": { "2024": 10, "2025": 25, "2026": 45, "2027": 60, "2028": 75, "2029": 85, "2030": 95 },
-            "sec_name": "Equipos Reacondicionados",
-            "sec_unit": "ud/año",
-            "sec_data": { "2024": 50, "2025": 150, "2026": 300, "2027": 500, "2028": 750, "2029": 1000, "2030": 1500 }
-        },
-        {
-            "id": 3,
-            "title": "Movilidad",
-            "kpi_name": "Cero Emisiones",
-            "kpi_unit": "%",
-            "data": { "2024": 0, "2025": 10, "2026": 25, "2027": 35, "2028": 50, "2029": 75, "2030": 100 },
-            "sec_name": "Ahorro por IA",
-            "sec_unit": "%",
-            "sec_data": { "2024": 0, "2025": 5, "2026": 12, "2027": 18, "2028": 25, "2029": 30, "2030": 35 }
-        },
-        {
-            "id": 4,
-            "title": "Green Cloud",
-            "kpi_name": "Proveedores Verdes",
-            "kpi_unit": "%",
-            "data": { "2024": 0, "2025": 20, "2026": 40, "2027": 60, "2028": 80, "2029": 90, "2030": 100 },
-            "sec_name": "PUE Medio",
-            "sec_unit": "ratio",
-            "sec_data": { "2024": 1.80, "2025": 1.65, "2026": 1.40, "2027": 1.35, "2028": 1.25, "2029": 1.20, "2030": 1.15 }
-        }
-    ]
-};
+let sustainabilityData = null;
 
 // Global Chart Instances
 let charts = {
@@ -69,8 +22,28 @@ const colors = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    initDashboard();
+    fetch('data/sostenibilidad.json')
+        .then(res => res.json())
+        .then(data => {
+            sustainabilityData = data;
+            initDashboard();
+        })
+        .catch(err => console.error("Error loading sustainability data:", err));
 });
+
+// Helper to get Year-Month from index (0 to 83)
+function getMonthYearFromIndex(index) {
+    const year = 2024 + Math.floor(index / 12);
+    const month = (index % 12) + 1;
+    return `${year}-${month.toString().padStart(2, '0')}`;
+}
+
+function getDisplayMonthYear(index) {
+    const months = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const year = 2024 + Math.floor(index / 12);
+    const month = index % 12;
+    return `${months[month]} ${year}`;
+}
 
 function initDashboard() {
     initCards();
@@ -80,13 +53,14 @@ function initDashboard() {
     const yearDisplay = document.getElementById('current-year-display');
     
     // Initial Render
+    yearDisplay.textContent = getDisplayMonthYear(slider.value);
     updateDashboard(slider.value);
     
     // Listen for slider changes
     slider.addEventListener('input', (e) => {
-        const year = e.target.value;
-        yearDisplay.textContent = year;
-        updateDashboard(year);
+        const index = parseInt(e.target.value, 10);
+        yearDisplay.textContent = getDisplayMonthYear(index);
+        updateDashboard(index);
     });
 }
 
@@ -110,48 +84,54 @@ function initCards() {
     });
 }
 
-function updateDashboard(year) {
+function updateDashboard(index) {
+    const monthKey = getMonthYearFromIndex(index);
+
     // Update Cards
     sustainabilityData.pillars.forEach(pillar => {
         const valueElement = document.getElementById(`kpi-val-${pillar.id}`);
         if(valueElement) {
-            valueElement.textContent = pillar.data[year];
+            valueElement.textContent = Math.round(pillar.data[monthKey] * 10) / 10;
         }
     });
 
-    // Animate Cards by removing and adding a subtle class (optional trick for number jump)
+    // Animate Cards
     document.querySelectorAll('.kpi-card').forEach(el => {
         el.style.transform = 'scale(1.02)';
         setTimeout(() => el.style.transform = 'none', 150);
     });
 
     // Update Charts
-    updateEnergyChart(year);
-    updateCircularChart(year);
-    updateMobilityChart(year);
-    updateCloudChart(year);
+    updateEnergyChart(index);
+    updateCircularChart(index);
+    updateMobilityChart(index);
+    updateCloudChart(index);
 }
 
 // ---------------------------------------------------------
 // Chart Inicializations & Updates
 // ---------------------------------------------------------
 
-function getYearsUpTo(targetYear) {
-    const years = [];
-    for(let y = 2024; y <= targetYear; y++) years.push(y.toString());
-    return years;
+function getMonthsUpTo(targetIndex) {
+    const labels = [];
+    for(let i = 0; i <= targetIndex; i++) {
+        labels.push(getMonthYearFromIndex(i));
+    }
+    return labels;
 }
 
 function initCharts() {
     Chart.defaults.font.family = "'Inter', sans-serif";
     Chart.defaults.color = 'hsl(210, 10%, 40%)';
     
+    const initialLabel = getMonthYearFromIndex(0);
+    
     // 1. Energy (Stacked Area)
     const ctxEnergy = document.getElementById('chartEnergy').getContext('2d');
     charts.energy = new Chart(ctxEnergy, {
         type: 'line',
         data: {
-            labels: ['2024'],
+            labels: [initialLabel],
             datasets: [{
                 label: '% Renovable',
                 data: [0],
@@ -198,7 +178,7 @@ function initCharts() {
     charts.mobility = new Chart(ctxMobility, {
         type: 'bar',
         data: {
-            labels: ['2024'],
+            labels: [initialLabel],
             datasets: [
                 {
                     label: '% Flota Cero Emisiones',
@@ -228,7 +208,7 @@ function initCharts() {
         data: {
             labels: ['PUE Actual', 'Margen Mejora'],
             datasets: [{
-                data: [1.8, 0.2], // PUE ranges from 1 to ~2 basically, we map it visually
+                data: [1.8, 0.2],
                 backgroundColor: [colors.primary, colors.gray],
                 borderWidth: 0
             }]
@@ -249,25 +229,26 @@ function initCharts() {
 // ---------------------------------------------------------
 // Dynamic Data Injectors per Chart
 // ---------------------------------------------------------
-function updateEnergyChart(year) {
-    const labels = getYearsUpTo(year);
-    const data = labels.map(y => sustainabilityData.pillars[0].data[y]);
+function updateEnergyChart(index) {
+    const labels = getMonthsUpTo(index);
+    const data = labels.map(key => sustainabilityData.pillars[0].data[key]);
     
     charts.energy.data.labels = labels;
     charts.energy.data.datasets[0].data = data;
     charts.energy.update();
 }
 
-function updateCircularChart(year) {
-    const pData = sustainabilityData.pillars[1].data[year];
+function updateCircularChart(index) {
+    const key = getMonthYearFromIndex(index);
+    const pData = sustainabilityData.pillars[1].data[key];
     charts.circular.data.datasets[0].data = [pData, 100 - pData];
     charts.circular.update();
 }
 
-function updateMobilityChart(year) {
-    const labels = getYearsUpTo(year);
-    const dataset1 = labels.map(y => sustainabilityData.pillars[2].data[y]);
-    const dataset2 = labels.map(y => sustainabilityData.pillars[2].sec_data[y]);
+function updateMobilityChart(index) {
+    const labels = getMonthsUpTo(index);
+    const dataset1 = labels.map(key => sustainabilityData.pillars[2].data[key]);
+    const dataset2 = labels.map(key => sustainabilityData.pillars[2].sec_data[key]);
 
     charts.mobility.data.labels = labels;
     charts.mobility.data.datasets[0].data = dataset1;
@@ -275,14 +256,11 @@ function updateMobilityChart(year) {
     charts.mobility.update();
 }
 
-function updateCloudChart(year) {
-    const pueValue = sustainabilityData.pillars[3].sec_data[year];
-    // Map PUE (1.0 to 2.0) to a percentage for visual representation
-    // Assuming ideal PUE is 1.0 (100% efficient), and worst is 2.0.
-    // Progress towards 1.0 = (2.0 - PUE) / 1.0 * 100
+function updateCloudChart(index) {
+    const key = getMonthYearFromIndex(index);
+    const pueValue = sustainabilityData.pillars[3].sec_data[key];
     const efficiencyTarget = ((2.0 - pueValue) / 1.0) * 100;
     
-    // Update chart colors dynamically: Red if bad, yellow if OK, green if good
     let color = colors.primary;
     if (pueValue <= 1.25) color = colors.eco;
     
