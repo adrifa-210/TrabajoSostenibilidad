@@ -112,6 +112,7 @@ header.glass.mobile-nav-open .bar {
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
     cursor: pointer;
+    will-change: transform; /* Hint to GPU */
 }
 
 /* Hover on desktop, .is-flipped for mobile JS */
@@ -261,6 +262,7 @@ header.glass.mobile-nav-open .bar {
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), 
                 filter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     z-index: 1;
+    will-change: transform, filter; /* Optimization */
 }
 
 .hero-visual:hover .hero-card-img {
