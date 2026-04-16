@@ -229,7 +229,22 @@
     animation: slideUpFade 0.5s ease-out forwards;
 }
 
-/* Eliminado el media query redundante ya que layout.css se encarga globalmente de .col-2 y .col-4 al bajar de 968px */
+/* 3x2 Grid Style */
+.grid-3x2 {
+    grid-template-columns: repeat(3, 1fr) !important;
+}
+
+@media (max-width: 1100px) {
+    .grid-3x2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-3x2 {
+        grid-template-columns: 1fr !important;
+    }
+}
 
 @media (max-width: 576px) {
     .year-display {
