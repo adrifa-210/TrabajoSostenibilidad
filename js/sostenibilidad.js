@@ -88,24 +88,6 @@ function initCards() {
     const container = document.getElementById('kpi-cards-container');
     container.innerHTML = '';
     
-    const extraInfo = [
-        "Avanzamos hacia el autoconsumo total y una máxima eficiencia energética.",
-        "Apostamos por extender la vida útil tecnológica y potenciar el reciclaje.",
-        "Transformamos la logística con flota verde y rutas optimizadas por IA.",
-        "Colaboramos con centros de datos de PUE óptimo y neutros en carbono.",
-        "Promovemos la igualdad, conciliación y alfabetización digital en Granada.",
-        "Apostamos firmemente por la igualdad y paridad de género en la empresa."
-    ];
-    
-    const cardIcons = [
-        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>`,
-        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>`,
-        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>`,
-        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`,
-        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
-        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`
-    ];
-    
     sustainabilityData.pillars.forEach((pillar, index) => {
         const card = document.createElement('div');
         card.className = 'card-container kpi-card-wrapper';
@@ -115,7 +97,7 @@ function initCards() {
             <div class="card-inner">
                 <div class="card-front glass kpi-front">
                     <div class="card-icon" style="margin-bottom: 0.5rem; transform: scale(0.85);">
-                        ${cardIcons[index]}
+                        ${pillar.card_icon}
                     </div>
                     <div class="kpi-title">${pillar.title}</div>
                     <div class="kpi-value-wrapper">
@@ -126,9 +108,9 @@ function initCards() {
                 </div>
                 <div class="card-back kpi-back">
                     <div class="card-icon">
-                        ${cardIcons[index]}
+                        ${pillar.card_icon}
                     </div>
-                    <p style="position: relative; z-index: 2;">${extraInfo[index]}</p>
+                    <p style="position: relative; z-index: 2;">${pillar.extra_info}</p>
                 </div>
             </div>
         `;
@@ -477,6 +459,19 @@ function initModal() {
             modalChartInstance.update();
         }
     });
+
+    // Info Modal Events
+    document.querySelectorAll('.read-more-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const infoKey = e.currentTarget.dataset.info;
+            openInfoModal(infoKey);
+        });
+    });
+    
+    document.getElementById('close-info-btn').addEventListener('click', closeInfoModal);
+    document.getElementById('info-modal').addEventListener('click', (e) => {
+        if(e.target.id === 'info-modal') closeInfoModal();
+    });
 }
 
 function openChartModal(type, title) {
@@ -527,3 +522,22 @@ function closeChartModal() {
     document.getElementById('chart-modal').classList.remove('active');
     currentModalChartType = null;
 }
+
+// ---------------------------------------------------------
+// Info Modal Logic
+// ---------------------------------------------------------
+function openInfoModal(type) {
+    const p = sustainabilityData.pillars.find(x => x.key === type);
+    if(!p) return;
+    
+    document.getElementById('info-modal-title').innerText = p.modal_title;
+    document.getElementById('info-modal-body').innerHTML = p.modal_content;
+    
+    const modal = document.getElementById('info-modal');
+    requestAnimationFrame(() => modal.classList.add('active'));
+}
+
+function closeInfoModal() {
+    document.getElementById('info-modal').classList.remove('active');
+}
+
