@@ -182,6 +182,11 @@
     background: linear-gradient(135deg, #C5192D, #FF3A21, #A21942); /* Rojo ODS 4, Naranja ODS 5, Granate ODS 8 */
 }
 
+/* Orange/Red ODS 5 */
+.ods-5 {
+    background-color: #FF3A21;
+}
+
 .chart-desc {
     font-size: 0.85rem;
     margin-bottom: 0;

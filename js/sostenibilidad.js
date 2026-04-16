@@ -12,7 +12,8 @@ let charts = {
     circular: null,
     mobility: null,
     cloud: null,
-    social: null
+    social: null,
+    parity: null
 };
 
 // Global Colors based on CSS variables
@@ -92,7 +93,8 @@ function initCards() {
         "Apostamos por extender la vida útil tecnológica y potenciar el reciclaje.",
         "Transformamos la logística con flota verde y rutas optimizadas por IA.",
         "Colaboramos con centros de datos de PUE óptimo y neutros en carbono.",
-        "Promovemos la igualdad, conciliación y alfabetización digital en Granada."
+        "Promovemos la igualdad, conciliación y alfabetización digital en Granada.",
+        "Apostamos firmemente por la igualdad y paridad de género en la empresa."
     ];
     
     const cardIcons = [
@@ -100,7 +102,8 @@ function initCards() {
         `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10M23 14l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>`,
         `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>`,
         `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`,
-        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`
+        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>`,
+        `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" stroke-width="1.5" stroke="currentColor" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>`
     ];
     
     sustainabilityData.pillars.forEach((pillar, index) => {
@@ -156,6 +159,7 @@ function updateDashboard(index) {
     updateMobilityChart(index);
     updateCloudChart(index);
     updateSocialChart(index);
+    updateParityChart(index);
 }
 
 // ---------------------------------------------------------
@@ -325,6 +329,47 @@ function initCharts() {
             }
         }
     });
+
+    // 6. Parity (Line chart with two datasets)
+    const ctxParity = document.getElementById('chartParity').getContext('2d');
+    charts.parity = new Chart(ctxParity, {
+        type: 'line',
+        data: {
+            labels: [initialLabel],
+            datasets: [
+                {
+                    label: '% Mujeres',
+                    data: [0],
+                    borderColor: 'hsla(340, 82%, 44%, 1)',
+                    backgroundColor: 'hsla(340, 82%, 44%, 0.2)',
+                    fill: false,
+                    tension: 0.4
+                },
+                {
+                    label: '% Hombres',
+                    data: [0],
+                    borderColor: 'hsl(215, 70%, 45%)',
+                    backgroundColor: 'hsla(215, 70%, 45%, 0.2)',
+                    fill: false,
+                    tension: 0.4
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: { display: true, text: '%' }
+                }
+            },
+            plugins: {
+                legend: { display: true, position: 'bottom' }
+            }
+        }
+    });
 }
 
 // ---------------------------------------------------------
@@ -380,6 +425,18 @@ function updateSocialChart(index) {
     charts.social.data.datasets[0].data = dataset1;
     charts.social.data.datasets[1].data = dataset2;
     charts.social.update();
+}
+
+function updateParityChart(index) {
+    const labels  = getMonthsUpTo(index);
+    const pillar  = sustainabilityData.pillars[5];
+    const dataset1 = labels.map(key => pillar.data[key]);
+    const dataset2 = labels.map(key => pillar.sec_data[key]);
+
+    charts.parity.data.labels = labels;
+    charts.parity.data.datasets[0].data = dataset1;
+    charts.parity.data.datasets[1].data = dataset2;
+    charts.parity.update();
 }
 
 // ---------------------------------------------------------
