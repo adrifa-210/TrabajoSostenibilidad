@@ -1,0 +1,130 @@
+/* css/equipo-desarrollo.css */
+
+/* ── Sección Hero ─────────────────────────────────────────── */
+.stakeholders-hero {
+    padding-top: 10rem;
+    padding-bottom: var(--space-4);
+    background: var(--bg-light);
+    text-align: center;
+}
+
+.stakeholders-hero h1 span {
+    color: var(--primary);
+}
+
+.hero-subtitle {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Los componentes de tarjeta (stakeholder-card) ahora se gestionan globalmente en components.css */
+
+.stakeholders-section {
+    padding: var(--space-4) 0 var(--space-5);
+    background: var(--bg-light);
+}
+
+/* ── Acordeones de Habilidades ────────────────────────────── */
+.team-accordions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.team-accordion {
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.team-accordion[open] {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.team-accordion summary {
+    padding: 0.75rem 1rem;
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+    transition: var(--transition);
+    position: relative;
+}
+
+.team-accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.team-accordion summary:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.expectation-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Colores de puntos */
+.dot-clients   { background: hsl(215, 70%, 45%); }
+.dot-employees { background: hsl(142, 60%, 35%); }
+.dot-suppliers { background: hsl(35, 90%, 50%);  }
+.dot-public    { background: hsl(280, 55%, 45%); }
+
+.accordion-icon {
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    transition: transform 0.3s ease;
+}
+
+.team-accordion[open] .accordion-icon {
+    transform: rotate(45deg);
+    color: var(--primary);
+}
+
+.accordion-content {
+    padding: 0 1rem 1rem 2.8rem;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── CTA final ────────────────────────────────────────────── */
+.stakeholders-cta {
+    background: var(--text-main);
+    color: white;
+    text-align: center;
+    padding: var(--space-4) 0;
+}
+
+.stakeholders-cta h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.stakeholders-cta p {
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+}

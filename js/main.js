@@ -116,16 +116,4 @@ function initSmoothScroll() {
     });
 }
 
-// Helper: Add classes for animations if not present in HTML
-const style = document.createElement('style');
-style.innerHTML = `
-    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-    .fade-in.active { opacity: 1; transform: translateY(0); }
-    
-    .card { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-    .card.active { opacity: 1; transform: translateY(0); }
-    
-    .hero-content h1 { opacity: 0; transform: translateX(-30px); transition: all 1s ease-out; }
-    .hero-content h1.active { opacity: 1; transform: translateX(0); }
-`;
-document.head.appendChild(style);
+// Animations are now handled via CSS (main.css) to prevent flickering on load

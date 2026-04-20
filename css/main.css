@@ -111,6 +111,7 @@ a {
     text-decoration: none;
     color: inherit;
     transition: var(--transition);
+    cursor: pointer;
 }
 
 img {
@@ -148,4 +149,68 @@ img {
 
 .accent {
     color: var(--primary);
+}
+
+/* Global Cursor & Selection Fixes */
+.logo, 
+.nav-item, 
+.btn, 
+button, 
+summary, 
+.card-inner, 
+.stakeholder-icon,
+.mobile-menu-toggle,
+.chart-expand-btn,
+.infra-icon-wrapper,
+.quote-icon,
+.ods-badge {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+button, 
+.btn, 
+summary, 
+.nav-item, 
+.chart-expand-btn, 
+.mobile-menu-toggle,
+.read-more-btn {
+    cursor: pointer;
+}
+
+/* ── Animaciones de Entrada (Scroll Reveal) ──────────────── */
+.fade-in { 
+    opacity: 0; 
+    transform: translateY(20px); 
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; 
+    will-change: opacity, transform;
+}
+
+.fade-in.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.card { 
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.card.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+.hero-content h1 { 
+    opacity: 0; 
+    transform: translateX(-30px); 
+    transition: all 1s ease-out; 
+}
+
+.hero-content h1.active { 
+    opacity: 1; 
+    transform: translateX(0); 
 }
