@@ -1,6 +1,6 @@
 /* css/equipo-desarrollo.css */
 
-/* ── Sección Hero ─────────────────────────────────────────── */
+/* Sección de cabecera (parte superior) */
 .stakeholders-hero {
     padding-top: 10rem;
     padding-bottom: var(--space-4);
@@ -25,7 +25,7 @@
     background: var(--bg-light);
 }
 
-/* ── Acordeones de Habilidades ────────────────────────────── */
+/* Desplegables de habilidades (Acordeones) */
 .team-accordions {
     display: flex;
     flex-direction: column;
@@ -110,7 +110,7 @@
     }
 }
 
-/* ── CTA final ────────────────────────────────────────────── */
+/* Sección final con botón de acción */
 .stakeholders-cta {
     background: var(--text-main);
     color: white;

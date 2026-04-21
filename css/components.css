@@ -1,6 +1,6 @@
-/* COMPONENTS - components.css */
+/* COMPONENTES Y ELEMENTOS VISUALES - components.css */
 
-/* Glassmorphism Effect */
+/* Efecto de cristal (transparencia con desenfoque) */
 .glass {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
@@ -12,7 +12,7 @@
 header.glass {
     position: fixed;
     top: 1.5rem;
-    /* Floating pill */
+    /* Menú flotante estilo "pastilla" */
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
@@ -21,10 +21,10 @@ header.glass {
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Modal Open State */
+/* Estado del menú cuando está abierto (en móviles) */
 header.glass.mobile-nav-open {
     background: rgba(10, 15, 25, 0.95);
-    /* Dark premium glass */
+    /* Cristal oscuro premium */
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     border-color: rgba(255, 255, 255, 0.1);
@@ -32,12 +32,12 @@ header.glass.mobile-nav-open {
 
 header.glass.mobile-nav-open .logo span {
     color: white;
-    /* Invert logo for dark menu */
+    /* Invertir el color del logo para el menú oscuro */
 }
 
 header.glass.mobile-nav-open .bar {
     background-color: white;
-    /* Invert toggle for dark menu */
+    /* Invertir el botón del menú para el menú oscuro */
 }
 
 .mobile-menu-toggle {
@@ -59,7 +59,7 @@ header.glass.mobile-nav-open .bar {
     transition: var(--transition);
 }
 
-/* Active state for hamburger to X morph */
+/* Animación del botón del menú (se convierte en X) */
 .mobile-menu-toggle.is-active .bar:nth-child(1) {
     transform: translateY(4px) rotate(45deg);
 }
@@ -68,7 +68,7 @@ header.glass.mobile-nav-open .bar {
     transform: translateY(-4px) rotate(-45deg);
 }
 
-/* Buttons */
+/* Botones */
 .btn {
     padding: 0.8rem 1.8rem;
     border-radius: 50px;
@@ -90,11 +90,11 @@ header.glass.mobile-nav-open .bar {
     box-shadow: 0 6px 20px hsla(var(--primary-h), 50%, 40%, 0.4);
 }
 
-/* 3D Flip Cards */
+/* Tarjetas que se dan la vuelta (Efecto 3D) */
 .card-container {
     perspective: 1500px;
     height: 380px;
-    /* Fixed height for 3D stability */
+    /* Altura fija para que el efecto 3D sea estable */
     width: 100%;
 }
 
@@ -107,10 +107,10 @@ header.glass.mobile-nav-open .bar {
     transform-style: preserve-3d;
     cursor: pointer;
     will-change: transform;
-    /* Hint to GPU */
+    /* Ayuda a la tarjeta gráfica a ir más fluido */
 }
 
-/* Hover on desktop, .is-flipped for mobile JS */
+/* Al pasar el ratón en ordenador, o al pulsar en el móvil */
 .card-container:hover .card-inner,
 .card-inner.is-flipped {
     transform: rotateY(180deg);
@@ -134,20 +134,20 @@ header.glass.mobile-nav-open .bar {
 }
 
 .card-front {
-    /* Restore Glass Style */
+    /* Estilo de cristal de la parte frontal */
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     transform: translateZ(1px);
-    /* Position in front */
+    /* Posición en la parte delantera */
 }
 
 .card-back {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     color: white;
     transform: rotateY(180deg) translateZ(1px);
-    /* Position in back relative to inner */
+    /* Posición en la parte trasera */
     padding: 2rem;
 }
 
@@ -208,7 +208,7 @@ header.glass.mobile-nav-open .bar {
     stroke: var(--accent);
 }
 
-/* Hero Visual Animation */
+/* Animación visual del encabezado */
 .hero-visual {
     height: clamp(300px, 50vh, 400px);
     border-radius: 30px;
@@ -261,7 +261,7 @@ header.glass.mobile-nav-open .bar {
         filter 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     z-index: 1;
     will-change: transform, filter;
-    /* Optimization */
+    /* Optimización de rendimiento */
 }
 
 .hero-visual:hover .hero-card-img {
@@ -284,7 +284,7 @@ header.glass.mobile-nav-open .bar {
     color: white;
 }
 
-/* Nav Items */
+/* Elementos del menú */
 .nav-item {
     font-weight: 500;
     font-size: 0.95rem;
@@ -306,7 +306,7 @@ header.glass.mobile-nav-open .bar {
     width: 100%;
 }
 
-/* Diagnosis Grid */
+/* Cuadrícula de diagnóstico */
 .bg-dark {
     background-color: var(--text-main);
     color: white;
@@ -341,7 +341,7 @@ header.glass.mobile-nav-open .bar {
     border-color: var(--eco);
 }
 
-/* Infrastructure Section */
+/* Sección de infraestructura */
 .infra-grid {
     display: flex;
     flex-direction: column;
@@ -440,7 +440,7 @@ header.glass.mobile-nav-open .bar {
     border-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.3);
 }
 
-/* Responsive Overrides */
+/* Ajustes para pantallas pequeñas (móviles) */
 @media (max-width: 968px) {
     .nav-links.mobile-active {
         display: flex;
@@ -484,7 +484,7 @@ header.glass.mobile-nav-open .bar {
 
     .mobile-menu-toggle {
         display: flex !important;
-        /* Ensure visibility */
+        /* Asegurar que se vea siempre */
     }
 
     .diagnosis-grid {
@@ -501,7 +501,7 @@ header.glass.mobile-nav-open .bar {
     }
 }
 
-/* ── Stakeholder / Team Cards (Shared Component) ─────────── */
+/* ── Tarjetas de equipo y grupos de interés (Elementos compartidos) ── */
 .stakeholder-card {
     display: flex;
     flex-direction: column;
@@ -536,7 +536,7 @@ header.glass.mobile-nav-open .bar {
     display: block;
 }
 
-/* Color Variants for Icons and Dividers */
+/* Variantes de color para iconos y líneas separadoras */
 .icon-blue   { background: linear-gradient(135deg, hsl(215, 70%, 45%), hsl(200, 80%, 50%)); }
 .icon-green  { background: linear-gradient(135deg, hsl(142, 60%, 35%), hsl(160, 60%, 45%)); }
 .icon-orange { background: linear-gradient(135deg, hsl(35, 90%, 50%),  hsl(25, 85%, 55%));  }

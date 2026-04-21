@@ -1,11 +1,11 @@
 /* css/grupos-interes.css */
 
-/* ── Enlace activo en el nav ──────────────────────────────── */
+/* Indica qué página estamos viendo en el menú */
 .nav-item--active {
     color: var(--primary) !important;
 }
 
-/* ── Sección Hero ─────────────────────────────────────────── */
+/* Sección de cabecera (parte superior) */
 .stakeholders-hero {
     padding-top: 10rem;
     padding-bottom: var(--space-4);
@@ -23,7 +23,7 @@
     margin-right: auto;
 }
 
-/* ── Sección de tarjetas ──────────────────────────────────── */
+/* Sección donde aparecen las tarjetas */
 .stakeholders-section {
     padding: var(--space-4) 0 var(--space-5);
     background: var(--bg-light);
@@ -73,7 +73,7 @@
     margin-top: 2px;
 }
 
-/* ── Divisor de color ─────────────────────────────────────── */
+/* Línea decorativa de color */
 .stakeholder-divider {
     height: 2px;
     border-radius: 2px;
@@ -86,7 +86,7 @@
 .stakeholder-divider.suppliers { background: linear-gradient(90deg, hsl(35, 90%, 50%),  transparent); }
 .stakeholder-divider.public    { background: linear-gradient(90deg, hsl(280, 55%, 45%), transparent); }
 
-/* ── Descripción y lista de expectativas ─────────────────── */
+/* Textos y listas de lo que espera cada grupo */
 .stakeholder-desc {
     font-size: 0.9rem;
     color: var(--text-muted);
@@ -124,7 +124,7 @@
 .dot-suppliers { background: hsl(35, 90%, 50%);  }
 .dot-public    { background: hsl(280, 55%, 45%); }
 
-/* ── CTA final ────────────────────────────────────────────── */
+/* Sección final con botón de acción */
 .stakeholders-cta {
     background: var(--text-main);
     color: white;

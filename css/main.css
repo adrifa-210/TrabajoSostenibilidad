@@ -1,14 +1,14 @@
-/* DESIGN SYSTEM - main.css */
+/* ESTILOS PRINCIPALES Y VARIABLES - main.css */
 :root {
-    /* Color Palette - InforFix Tech-Eco Theme (HSL) */
+    /* Paleta de colores - Tema Tecnológico y Ecológico de InforFix */
     --primary-h: 215;
-    /* Tech Blue */
+    /* Azul Tecnológico */
     --primary-s: 70%;
     --primary-l: 45%;
     --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
 
     --eco-h: 142;
-    /* Eco Green */
+    /* Verde Ecológico */
     --eco-s: 60%;
     --eco-l: 45%;
     --eco: hsl(var(--eco-h), var(--eco-s), var(--eco-l));
@@ -21,33 +21,33 @@
     --bg-white: hsl(0, 0%, 100%);
     --bg-light: hsl(215, 20%, 97%);
 
-    /* Shadows & Glassmorphism */
+    /* Sombras y efectos de cristal (Transparencias) */
     --shadow-soft: 0 10px 30px -10px hsla(var(--primary-h), 50%, 20%, 0.1);
     --glass-bg: hsla(0, 0%, 100%, 0.7);
     --glass-border: hsla(0, 0%, 100%, 0.2);
 
-    /* Typography - Responsive */
+    /* Tipografías - Adaptables según el dispositivo */
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Inter', sans-serif;
     
-    /* Responsive Heading Sizes */
+    /* Tamaños de letra para títulos (se ajustan solos) */
     --fs-h1: clamp(2.5rem, 8vw, 4.5rem);
     --fs-h2: clamp(2rem, 6vw, 3rem);
     --fs-h3: clamp(1.5rem, 4vw, 2rem);
     --fs-body: clamp(1rem, 2vw, 1.125rem);
     
-    /* Spacing - Responsive */
+    /* Espaciados - Espacio entre elementos */
     --space-1: 0.5rem;
     --space-2: 1rem;
     --space-3: 2rem;
     --space-4: clamp(3rem, 10vw, 6rem);
     --space-5: clamp(5rem, 15vw, 10rem);
 
-    /* Transitions */
+    /* Transiciones (suavidad al mover elementos) */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Reset & Base Styles */
+/* Configuración básica para todos los elementos */
 *,
 *::before,
 *::after {
@@ -119,7 +119,7 @@ img {
     display: block;
 }
 
-/* Typography Utilities */
+/* Utilidades para los textos */
 .gradient-text {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
@@ -151,7 +151,7 @@ img {
     color: var(--primary);
 }
 
-/* Global Cursor & Selection Fixes */
+/* Ajustes generales del ratón (Cursor) y selección de texto */
 .logo, 
 .nav-item, 
 .btn, 

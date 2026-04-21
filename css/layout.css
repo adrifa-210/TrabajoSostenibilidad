@@ -1,4 +1,4 @@
-/* LAYOUT - layout.css */
+/* ESTRUCTURA Y DISEÑO GENERAL - layout.css */
 
 .container {
     width: 90%;
@@ -18,17 +18,17 @@ main {
 .hero {
     position: relative;
     overflow: hidden;
-    padding-top: 10rem; /* Space for fixed header */
+    padding-top: 10rem; /* Espacio para que el menú fijo no tape el contenido */
 }
 
-/* Seamless transition to next section */
+/* Transición suave hacia la siguiente sección */
 .hero::after {
     content: '';
     position: absolute;
-    bottom: -1px; /* Slight overlap to prevent 1px lines */
+    bottom: -1px; /* Solapado suave para evitar líneas blancas */
     left: 0;
     width: 100%;
-    height: 20rem; /* Very tall fade for maximum smoothness */
+    height: 20rem; /* Degradado alto para que sea muy suave */
     background: linear-gradient(to bottom, transparent, var(--bg-light));
     pointer-events: none;
     z-index: 1;
@@ -38,12 +38,12 @@ main {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 140%; /* Wider bleed for parallax */
-    height: 150%; /* Taller bleed for parallax scroll */
+    width: 140%; /* Un poco más ancho para el efecto de movimiento al bajar */
+    height: 150%; /* Un poco más alto para el efecto de movimiento */
     transform: translate(-50%, -50%);
     z-index: -1;
     pointer-events: none;
-    will-change: transform; /* Performance optimization */
+    will-change: transform; /* Ayuda al ordenador a que vaya más fluido */
 }
 
 .hero-bg-img {
@@ -51,14 +51,14 @@ main {
     height: 100%;
     object-fit: cover;
     filter: blur(10px) opacity(0.50);
-    /* "strong blur" as requested */
+    /* Desenfoque fuerte como se pidió */
 }
 
 .bg-light {
     background-color: var(--bg-light);
 }
 
-/* Navigation Layout */
+/* Estilos de la barra de navegación (menú) */
 header nav {
     display: flex;
     justify-content: space-between;
@@ -90,7 +90,7 @@ header nav {
     transform: translateY(-2px);
 }
 
-/* Grid System */
+/* Sistema de cuadrículas (columnas) */
 .grid {
     display: grid;
 }
@@ -123,7 +123,7 @@ header nav {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)) !important;
 }
 
-/* Hero Specific Layout */
+/* Estructura específica para el encabezado principal */
 .hero-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -131,7 +131,7 @@ header nav {
     gap: 4rem;
     min-height: 80vh;
     position: relative;
-    z-index: 2; /* Over the fade overlay */
+    z-index: 2; /* Para que esté por encima del fondo */
 }
 
 @media (max-width: 968px) {
@@ -144,12 +144,7 @@ header nav {
         width: 100%;
     }
 
-    .mobile-top-bar {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+    /* Menú móvil */
 
     .hero-grid {
         grid-template-columns: 1fr;
@@ -184,14 +179,14 @@ header nav {
         gap: 2rem;
         text-align: center;
         justify-content: center;
-        flex: 1; /* Take up vertical space in column nav */
+        flex: 1; /* Ocupa el espacio vertical en el menú desplegado */
     }
 
     .nav-links.mobile-active {
         display: flex;
     }
 
-    /* Floating Expanded Pill State */
+    /* Estado del menú móvil cuando está abierto */
     header.glass.mobile-nav-open {
         top: 1.5rem;
         left: 50%;
@@ -219,7 +214,7 @@ header nav {
     }
 }
 
-/* Footer Layout */
+/* Estructura del pie de página */
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -271,14 +266,14 @@ header nav {
 
 .footer-bottom {
     text-align: center;
-    padding: 2rem 1.5rem; /* Added horizontal padding */
+    padding: 2rem 1.5rem; /* Añadido espacio a los lados */
     border-top: 1px solid var(--glass-border);
     font-size: 0.9rem;
     color: var(--text-muted);
     line-height: 1.5;
 }
 
-/* Legal Content Layout */
+/* Estructura de las páginas legales (Privacidad, términos...) */
 .legal-page {
     padding-top: 12rem;
     padding-bottom: var(--space-5);

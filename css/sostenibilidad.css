@@ -2,7 +2,7 @@
 
 .sustainability-hero {
     padding-top: 10rem;
-    /* Espacio fijo para el header, igual que en hero de main */
+    /* Espacio fijo arriba para que el menú no tape el título */
     padding-bottom: var(--space-4);
 }
 
@@ -11,7 +11,7 @@
     min-height: 100vh;
 }
 
-/* Slider Controls */
+/* Controles de la barra de tiempo (Slider) */
 .time-control-wrapper {
     padding: 2rem;
     border-radius: 16px;
@@ -33,7 +33,7 @@
     margin: 0 auto;
 }
 
-/* Custom Range Slider */
+/* Diseño personalizado de la barra de tiempo */
 .sustainability-slider {
     -webkit-appearance: none;
     appearance: none;
@@ -70,7 +70,7 @@
     font-weight: 600;
 }
 
-/* KPI Cards */
+/* Tarjetas de indicadores (KPIs) */
 .kpi-cards-grid {
     margin-bottom: 2rem;
 }
@@ -78,7 +78,7 @@
 .kpi-card-wrapper {
     animation: slideUpFade 0.5s ease-out forwards;
     transition: transform 0.3s ease;
-    /* Evita que tape el resto al hacer scale */
+    /* Evita que tape otros elementos al aumentar de tamaño */
     transform-style: preserve-3d;
 }
 
@@ -121,7 +121,7 @@
     vertical-align: super;
 }
 
-/* Chart Cards */
+/* Tarjetas de los gráficos */
 .chart-card {
     display: flex;
     flex-direction: column;
@@ -162,27 +162,27 @@
     background: linear-gradient(135deg, #FCC30B, #3F7E44);
 }
 
-/* Yellow & Green */
+/* Amarillo y Verde */
 .ods-12 {
     background-color: #BF8B2E;
 }
 
-/* Dark Gold */
+/* Dorado oscuro */
 .ods-11-13 {
     background: linear-gradient(135deg, #FD9D24, #3F7E44);
 }
 
-/* Orange & Green */
+/* Naranja y Verde */
 .ods-9-17 {
     background: linear-gradient(135deg, #FD6925, #19486A);
 }
 
-/* Orange & Dark Blue */
+/* Naranja y Azul oscuro */
 .ods-4-5-8 {
     background: linear-gradient(135deg, #C5192D, #FF3A21, #A21942); /* Rojo ODS 4, Naranja ODS 5, Granate ODS 8 */
 }
 
-/* Orange/Red ODS 5 */
+/* Naranja y Rojo */
 .ods-5 {
     background-color: #FF3A21;
 }
@@ -212,7 +212,7 @@
     margin: 0;
 }
 
-/* Animations */
+/* Animaciones de aparición */
 @keyframes slideUpFade {
     from {
         opacity: 0;
@@ -229,7 +229,7 @@
     animation: slideUpFade 0.5s ease-out forwards;
 }
 
-/* 3x2 Grid Style */
+/* Diseño de la cuadrícula de 3 columnas */
 .grid-3x2 {
     grid-template-columns: repeat(3, 1fr) !important;
 }
@@ -252,7 +252,7 @@
     }
 }
 
-/* Modal y Boton Ampliar */
+/* Estilos de la ventana flotante (Modal) y el botón de ampliar */
 .btn-icon {
     background: transparent;
     border: none;

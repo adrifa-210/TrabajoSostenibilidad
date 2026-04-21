@@ -6,30 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ActFinalUd03_SASP | Sostenibilidad 2030</title>
 
-    <!-- SEO Meta Tags -->
+    <!-- Información para buscadores (Google, etc.) -->
     <meta name="description"
         content="Portal de sostenibilidad InforFix 2030. Descubre nuestra hoja de ruta interactiva hacia la neutralidad de carbono, economía circular y Cloud verde.">
     <meta name="keywords"
         content="sostenibilidad, InforFix, Green Cloud, economía circular, simulador 2030, neutralidad de carbono">
     <meta name="author" content="Grupo 3: Alba Montoro, Adrián Fernández, Raúl Gorlat, Pilar García">
 
-    <!-- Preconnect to Google Fonts -->
+    <!-- Conexión con tipos de letra de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@300;400;600;800&display=swap"
         rel="stylesheet">
 
-    <!-- Stylesheets -->
+    <!-- Archivos de diseño (colores, letras, etc.) -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/sostenibilidad.css">
 
-    <!-- Favicon -->
+    <!-- Icono de la pestaña del navegador -->
     <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 
-    <!-- Chart.js -->
+    <!-- Herramienta para crear los gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
@@ -56,7 +56,7 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
+        <!-- Encabezado de la página -->
         <section class="section sustainability-hero bg-dark text-white text-center">
             <div class="container fade-in">
                 <h1 class="reveal-text">Portal de <span style="color:var(--eco)">Sostenibilidad</span> 2030</h1>
@@ -68,7 +68,7 @@
             </div>
         </section>
 
-        <!-- Interactive Dashboard -->
+        <!-- Cuadro de mandos interactivo (Simulador) -->
         <section class="section interactive-dashboard">
             <div class="container">
                 <!-- 1. Slider de Control -->
@@ -86,14 +86,14 @@
                     </div>
                 </div>
 
-                <!-- 2. Sección de Resumen (Cards) -->
+                <!-- Zona de tarjetas (el contenido se crea automáticamente) -->
                 <div class="grid grid-3x2 gap-2 mt-4 fade-in" id="kpi-cards-container">
-                    <!-- Cards will be injected by JS -->
+                    <!-- Las tarjetas aparecerán aquí mediante el archivo JS -->
                 </div>
 
-                <!-- 3. Sección de Detalles y Gráficos -->
+                <!-- Zona de detalles y gráficos explicativos -->
                 <div class="charts-grid grid col-2 gap-4 mt-4 fade-in">
-                    <!-- Chart 1 -->
+                    <!-- Gráfico 1: Energía -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
                             <div class="chart-header-info">
@@ -119,7 +119,7 @@
                         </div>
                     </div>
 
-                    <!-- Chart 2 -->
+                    <!-- Gráfico 2: Reciclaje -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
                             <div class="chart-header-info">
@@ -145,7 +145,7 @@
                         </div>
                     </div>
 
-                    <!-- Chart 3 -->
+                    <!-- Gráfico 3: Transporte -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
                             <div class="chart-header-info">
@@ -171,7 +171,7 @@
                         </div>
                     </div>
 
-                    <!-- Chart 4 -->
+                    <!-- Gráfico 4: Servidores -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
                             <div class="chart-header-info">
@@ -197,7 +197,7 @@
                         </div>
                     </div>
 
-                    <!-- Chart 5 -->
+                    <!-- Gráfico 5: Sociales -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
                             <div class="chart-header-info">
@@ -223,7 +223,7 @@
                         </div>
                     </div>
 
-                    <!-- Chart 6 -->
+                    <!-- Gráfico 6: Igualdad -->
                     <div class="chart-card glass-box">
                         <div class="chart-header">
                             <div class="chart-header-info">
@@ -288,7 +288,7 @@
         </div>
     </footer>
 
-    <!-- Modal Fullscreen Graphic -->
+    <!-- Ventanas flotantes (Modales) -->
     <div id="chart-modal" class="chart-modal-overlay">
         <div class="chart-modal-content glass-box">
             <div class="modal-header">
@@ -322,7 +322,7 @@
         </div>
     </div>
 
-    <!-- Info Detail Modal -->
+    <!-- Ventana de información detallada -->
     <div id="info-modal" class="chart-modal-overlay">
         <div class="chart-modal-content glass-box info-modal-content"
             style="max-width: 800px; height: auto; max-height: 90vh;">
@@ -338,12 +338,12 @@
             </div>
             <div class="info-modal-body" id="info-modal-body"
                 style="overflow-y: auto; text-align: left; padding-right: 1rem;">
-                <!-- Info will be injected here -->
+                <!-- La información se cargará aquí mediante el código JS -->
             </div>
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Archivos de funciones (lo que hace que la web se mueva) -->
     <script src="js/main.js"></script>
     <script src="js/sostenibilidad.js"></script>
 </body>

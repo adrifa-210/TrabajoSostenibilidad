@@ -1,7 +1,7 @@
 /**
- * MAIN LOGIC - js/main.js
- * Pure Vanilla JavaScript
- */
+ * LÓGICA PRINCIPAL - js/main.js
+ * Funciona sin herramientas externas (Vanilla JS)
+ **/
 
 document.addEventListener('DOMContentLoaded', () => {
     initScrollAnimations();
@@ -12,17 +12,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Mobile Scroll-Triggered Card Flip
- */
+ * Hace que las tarjetas se den la vuelta solas al bajar con el móvil
+ **/
 function initCardFlip() {
     const observerOptions = {
         root: null,
-        rootMargin: '-45% 0px -45% 0px', // Solo el 10% central de la pantalla
-        threshold: 0 // Intersecta en cuanto la tarjeta toque esa franja central
+        rootMargin: '-45% 0px -45% 0px', // Detecta cuando la tarjeta está en el centro de la pantalla
+        threshold: 0 // Se activa en cuanto toca esa zona central
     };
 
     const flipObserver = new IntersectionObserver((entries) => {
-        // Only trigger automatic flip on mobile viewports
+        // Solo ocurre en pantallas de móvil (menos de 968 píxeles de ancho)
         if (window.innerWidth >= 968) return;
 
         entries.forEach(entry => {
@@ -42,23 +42,23 @@ function initCardFlip() {
 }
 
 /**
- * Smooth Parallax Effect for Hero Background
- */
+ * Efecto de movimiento en el fondo del encabezado al bajar (Efecto Parallax)
+ **/
 function initParallax() {
     const heroBg = document.querySelector('.hero-bg-wrapper');
     if (!heroBg) return;
 
     window.addEventListener('scroll', () => {
         const scrolled = window.scrollY;
-        // Parallax factor: 0.4 (Adjust for more/less movement)
+        // Factor de movimiento: 0.8 (Se puede ajustar para más o menos movimiento)
         const val = scrolled * 0.8;
         heroBg.style.transform = `translate(-50%, calc(-50% + ${val}px))`;
     });
 }
 
 /**
- * Basic intersection observer for reveal animations
- */
+ * Escuchador que activa animaciones cuando bajamos la página
+ **/
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1
@@ -68,19 +68,19 @@ function initScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Reveal once
+                observer.unobserve(entry.target); // Solo se activa una vez
             }
         });
     }, observerOptions);
 
-    // Target elements
+    // Elementos a los que aplicamos el efecto de aparecer suavemente
     const fadeElements = document.querySelectorAll('.fade-in, .card, .hero-content h1');
     fadeElements.forEach(el => observer.observe(el));
 }
 
 /**
- * Mobile Menu Toggle logic
- */
+ * Lógica para abrir y cerrar el menú en móviles
+ **/
 function initMobileMenu() {
     const toggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -96,9 +96,8 @@ function initMobileMenu() {
 }
 
 /**
- * Polyfill-like smooth scroll for older browsers 
- * (though html {scroll-behavior: smooth} handles it in modern ones)
- */
+ * Suaviza el movimiento al pulsar enlaces que llevan a otras partes de la misma página
+ **/
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -116,4 +115,4 @@ function initSmoothScroll() {
     });
 }
 
-// Animations are now handled via CSS (main.css) to prevent flickering on load
+// Las animaciones ahora se gestionan principalmente con CSS para que no haya parpadeos al cargar

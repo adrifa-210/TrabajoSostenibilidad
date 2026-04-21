@@ -1,40 +1,41 @@
 /**
- * sustainability.js
- * Lógica interactiva para Simulador InforFix 2030 (Separado en JSON, meses/años)
- */
+ * sostenibilidad.js
+ * Funciones del Simulador InforFix 2030 (Usa datos de un archivo externo JSON)
+ **/
 
 let sustainabilityData = null;
 let modalChartInstance = null;
 
-// Global Chart Instances
+// Lugares donde se guardarán los gráficos
 let charts = {
-    energy: null,
-    circular: null,
-    mobility: null,
-    cloud: null,
-    social: null,
-    parity: null
+    energy: null,    // Gráfico de energía
+    circular: null,  // Gráfico de reciclaje
+    mobility: null,  // Gráfico de transporte
+    cloud: null,     // Gráfico de servidores
+    social: null,    // Gráfico de impacto social
+    parity: null     // Gráfico de igualdad
 };
 
-// Global Colors based on CSS variables
+// Colores principales basados en el diseño de la web
 const colors = {
-    primary: 'hsl(215, 70%, 45%)',
-    eco: 'hsl(142, 60%, 45%)',
-    gray: 'hsl(210, 10%, 80%)',
-    dark: 'hsl(210, 25%, 12%)'
+    primary: 'hsl(215, 70%, 45%)', // Azul
+    eco: 'hsl(142, 60%, 45%)',     // Verde
+    gray: 'hsl(210, 10%, 80%)',    // Gris
+    dark: 'hsl(210, 25%, 12%)'     // Oscuro
 };
 
+// Cargar el archivo de datos cuando la página esté lista
 document.addEventListener('DOMContentLoaded', () => {
     fetch('data/sostenibilidad.json')
         .then(res => res.json())
         .then(data => {
             sustainabilityData = data;
-            initDashboard();
+            initDashboard(); // Iniciar todo una vez cargados los datos
         })
-        .catch(err => console.error("Error loading sustainability data:", err));
+        .catch(err => console.error("Error cargando los datos de sostenibilidad:", err));
 });
 
-// Helper to get Year-Month from index (0 to 83)
+// Funciones auxiliares para trabajar con fechas (Mes y Año)
 function getMonthYearFromIndex(index) {
     const year = 2024 + Math.floor(index / 12);
     const month = (index % 12) + 1;
@@ -71,12 +72,12 @@ function initDashboard() {
     yearDisplay.textContent = getDisplayMonthYear(slider.value);
     updateDashboard(slider.value);
     
-    // Refresh mobile flip observers for newly injected cards
+    // Refrescar los efectos de las tarjetas para que funcionen también con el simulador
     if(typeof initCardFlip === 'function') {
         initCardFlip();
     }
     
-    // Listen for slider changes
+    // Escuchar cuando el usuario mueve la barra de tiempo
     slider.addEventListener('input', (e) => {
         const index = parseInt(e.target.value, 10);
         yearDisplay.textContent = getDisplayMonthYear(index);
@@ -84,6 +85,7 @@ function initDashboard() {
     });
 }
 
+// Crear las tarjetas de información principales
 function initCards() {
     const container = document.getElementById('kpi-cards-container');
     container.innerHTML = '';
@@ -118,10 +120,11 @@ function initCards() {
     });
 }
 
+// Actualizar todo el panel según el mes/año seleccionado
 function updateDashboard(index) {
     const monthKey = getMonthYearFromIndex(index);
 
-    // Update Cards
+    // Actualizar números de las tarjetas
     sustainabilityData.pillars.forEach(pillar => {
         const valueElement = document.getElementById(`kpi-val-${pillar.id}`);
         if(valueElement) {
@@ -129,13 +132,13 @@ function updateDashboard(index) {
         }
     });
 
-    // Animate Cards
+    // Pequeña animación visual al cambiar
     document.querySelectorAll('.kpi-card-wrapper').forEach(el => {
         el.style.transform = 'scale(1.02)';
         setTimeout(() => el.style.transform = 'none', 150);
     });
 
-    // Update Charts
+    // Actualizar todos los gráficos
     updateEnergyChart(index);
     updateCircularChart(index);
     updateMobilityChart(index);
@@ -145,7 +148,7 @@ function updateDashboard(index) {
 }
 
 // ---------------------------------------------------------
-// Chart Inicializations & Updates
+// Creación y configuración inicial de los gráficos
 // ---------------------------------------------------------
 
 function getMonthsUpTo(targetIndex) {
@@ -355,7 +358,7 @@ function initCharts() {
 }
 
 // ---------------------------------------------------------
-// Dynamic Data Injectors per Chart
+// Funciones para actualizar los datos de cada gráfico específico
 // ---------------------------------------------------------
 function updateEnergyChart(index) {
     const labels = getMonthsUpTo(index);
@@ -446,7 +449,7 @@ function initModal() {
         if(e.target === modal) closeChartModal();
     });
     
-    // Sincronizar slider modal con slider principal
+    // Sincronizar la barra de tiempo de la ventana con la principal
     modalSlider.addEventListener('input', (e) => {
         const val = e.target.value;
         mainSlider.value = val;
@@ -460,7 +463,7 @@ function initModal() {
         }
     });
 
-    // Info Modal Events
+    // Eventos para las ventanas de más información (Textos)
     document.querySelectorAll('.read-more-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const infoKey = e.currentTarget.dataset.info;
@@ -524,7 +527,7 @@ function closeChartModal() {
 }
 
 // ---------------------------------------------------------
-// Info Modal Logic
+// Lógica para las ventanas de información (Textos de ayuda)
 // ---------------------------------------------------------
 function openInfoModal(type) {
     const p = sustainabilityData.pillars.find(x => x.key === type);
