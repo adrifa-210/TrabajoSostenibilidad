@@ -37,7 +37,7 @@ InforFix es una empresa dedicada a la reparación y digitalización tecnológica
 
 ```text
 /
-├── assets/                 # Imágenes, iconos y fotos de perfil
+├── img/                    # Imágenes, iconos y fotos de perfil
 ├── css/
 │   ├── main.css            # Variables de diseño (colores, fuentes) y estilos base
 │   ├── layout.css          # Estructura general y diseño adaptable (grids)
@@ -58,6 +58,7 @@ InforFix es una empresa dedicada a la reparación y digitalización tecnológica
 ├── privacidad.html         # Información sobre manejo de datos (Simulacro)
 ├── terminos.html           # Condiciones de uso del portal (Simulacro)
 ├── CONTRIBUCIONES.md       # Documento de control de versiones y autoría
+├── UD03-Act_final_1dawA.pdf # Enunciado de la actividad
 └── README.md               # Esta guía del proyecto
 ```
 
