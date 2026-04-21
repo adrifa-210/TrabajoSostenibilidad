@@ -1,48 +1,69 @@
-# InforFix: Portal de Digitalización y Sostenibilidad 🌐🌱
+# Proyecto: Plan de Sostenibilidad InforFix 2030 🌐🌱
 
-Este proyecto es el portal oficial de **InforFix**, una empresa líder en reparación tecnológica y servicios de digitalización con sede en Granada. El sitio web está diseñado no solo para mostrar los servicios técnicos y de consultoría, sino también para presentar el **Plan de Sostenibilidad 2026**.
+Este repositorio contiene el trabajo realizado para la **Actividad Final de la Unidad Didáctica 03 (UD03)** del módulo de Sostenibilidad. El proyecto consiste en el desarrollo de un portal web para una empresa ficticia llamada **InforFix**, centrado en la comunicación de su estrategia de desarrollo sostenible.
 
-## 🏢 Sobre InforFix
+## 🎓 Contexto Académico
 
-- **Sede**: Granada, España (Sede Principal y Oficina Técnica).
-- **Equipo**: 60 empleados especializados.
-- **Sectores**: Educación, Sanidad, Comercio Electrónico y Administración Pública.
-- **Servicios Clave**: Desarrollo de apps empresariales, Servicios Cloud, Mantenimiento de Hardware, Gestión de Redes y Consultoría Tecnológica.
+- **Curso:** 1º Desarrollo de Aplicaciones Web (DAW) - A
+- **Centro:** IES Zaidín-Vergeles
+- **Asignatura:** Sostenibilidad en el sector tecnológico
+- **Proyecto:** Diseño e implementación de un Plan de Sostenibilidad y su visualización web.
 
-## 🌿 Compromiso con la Sostenibilidad
+## 👥 Equipo de Trabajo (Grupo 3)
 
-Actualmente, InforFix se encuentra en una fase de transformación hacia un modelo de negocio más verde. Este portal destaca:
-- **Diagnóstico Energético**: Transición de energías convencionales a renovables.
-- **Economía Circular**: Plan de reciclaje y reutilización de componentes electrónicos.
-- **Logística Limpia**: Reducción de emisiones en el servicio de transporte.
-- **Infraestructura Verde**: Migración hacia proveedores de cloud con políticas medioambientales responsables.
+Este proyecto ha sido desarrollado de forma colaborativa por:
+- **Adrián Fernández:** Lógica interactiva (JS), optimización técnica, maquetación y diseño.
+- **Raúl Gorlat:** Diseño visual, sistema de estilos (CSS) e investigación ASG/ODS.
+- **Pilar García:** Accesibilidad web, jerarquía de contenidos y corrección de errores.
+- **Alba Montoro:** Redacción del plan de sostenibilidad, análisis de grupos de interés y validación.
 
-## ✨ Características Técnicas
+> [!NOTE]
+> Para ver el detalle del reparto de tareas y la autoría de cada sección, consulta el archivo [CONTRIBUCIONES.md](file:///c:/Users/Adrian/Documents/Programacion/Web/TrabajoSostenibilidad/CONTRIBUCIONES.md).
 
-- **Tecnología**: HTML5, CSS3 (Vanilla) y JavaScript Moderno.
-- **Diseño**: Estética *Tech-Ecological* con efectos de Glassmorphism y animaciones de scroll.
-- **Arquitectura**: Código modular separado en capas de diseño (Sistema base, Layout y Componentes).
-- **Responsivo**: Adaptado para todos los dispositivos mediante CSS Grid y Flexbox.
+## 🏢 Sobre InforFix (Empresa Ficticia)
 
-## 🚀 Instalación y Uso
+InforFix es una empresa dedicada a la reparación y digitalización tecnológica en Granada. El objetivo del portal es simular cómo una empresa del sector puede transitar hacia un modelo sostenible, destacando:
+- **Diagnóstico Energético:** Paso a energías 100% renovables.
+- **Economía Circular:** Gestión de residuos electrónicos.
+- **Impacto Social:** Reducción de la brecha digital en el entorno local.
 
-El proyecto es estático y no requiere dependencias.
-1. Clona el repositorio.
-2. Abre `index.html` en tu navegador.
+## 🛠️ Tecnologías Utilizadas
 
-## 🛠️ Estructura
+- **Lenguajes:** HTML5, CSS3 (Vanilla, sin frameworks externos) y JavaScript (ES6+).
+- **Librerías:** [Chart.js](https://www.chartjs.org/) para la visualización de datos en el simulador.
+- **Diseño:** Estética moderna con efectos de *Glassmorphism* y animaciones suaves.
+
+## 📂 Estructura del Proyecto
 
 ```text
 /
-├── assets/         # Recursos visuales y logotipos
+├── assets/                 # Imágenes, iconos y fotos de perfil
 ├── css/
-│   ├── main.css        # Sistema de colores Tech-Eco y resets
-│   ├── layout.css      # Grids y estructura responsiva
-│   └── components.css  # Tarjetas, efectos glass y secciones especiales
+│   ├── main.css            # Variables de diseño (colores, fuentes) y estilos base
+│   ├── layout.css          # Estructura general y diseño adaptable (grids)
+│   ├── components.css      # Estilos de tarjetas, botones y efectos visuales
+│   ├── equipo-desarrollo.css # Estilos específicos para la página del equipo
+│   ├── grupos-interes.css  # Estilos para la sección de grupos de interés
+│   └── sostenibilidad.css  # Estilos para el simulador y los gráficos
+├── data/
+│   └── sostenibilidad.json # Base de datos JSON para el simulador interactivo
 ├── js/
-│   └── main.js         # Interactividad y observer de animaciones
-└── index.html      # Página principal de InforFix
+│   ├── main.js             # Interactividad general, menús y animaciones
+│   └── sostenibilidad.js   # Lógica del simulador y gestión de gráficos
+├── index.html              # Página principal y presentación de servicios
+├── sostenibilidad.html     # Panel interactivo con el Plan 2030 y simulador
+├── grupos-interes.html     # Análisis de expectativas de los stakeholders
+├── equipo-desarrollo.html  # Créditos de los autores del proyecto
+├── etica.html              # Declaración de principios éticos digitales
+├── privacidad.html         # Información sobre manejo de datos (Simulacro)
+├── terminos.html           # Condiciones de uso del portal (Simulacro)
+├── CONTRIBUCIONES.md       # Documento de control de versiones y autoría
+└── README.md               # Esta guía del proyecto
 ```
 
+## 🚀 Cómo visualizar el proyecto
+
+El sitio es totalmente estático y puede visualizarse abriendo cualquier archivo `.html` en un navegador web moderno. Se recomienda empezar por `index.html`.
+
 ---
-*Hecho por InforFix Digital - Comprometidos con el Futuro de Granada.*
+*Este proyecto tiene fines exclusivamente educativos y forma parte del currículo del ciclo formativo de Grado Superior en Desarrollo de Aplicaciones Web.*

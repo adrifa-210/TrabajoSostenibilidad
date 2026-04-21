@@ -1,88 +1,78 @@
-# Formulario de Control de Contribuciones - Grupo 3
+# 📄 Acta de Control de Contribuciones
 
-Este documento registra el reparto de tareas y la contribución individual de cada integrante en el desarrollo del trabajo final de la **UD 03: El Plan de Sostenibilidad**.
-
----
-
-## 📋 Información del Proyecto
-- **Curso:** 1º DAW A
-- **Grupo:** Grupo 3
-- **Integrantes:** Alba Montoro, Adrián Fernández, Raúl Gorlat, Pilar García
-- **Empresa Ficticia:** InforFix (Tecnología y Sostenibilidad)
+Este documento constituye el registro oficial del reparto de tareas, responsabilidades y la contribución individual de los integrantes del **Grupo 3** para la elaboración del proyecto final de la **Unidad Didáctica 03: El Plan de Sostenibilidad**.
 
 ---
 
-## 👤 Ficha de Integrante: Adrián Fernández
+## 📋 Información General del Proyecto
 
-### 1. Desarrollo Técnico (HTML/CSS/JS)
-- **¿En qué páginas has trabajado principalmente?**
-  - [x] Página 1: Inicio / Presentación (Maquetación y optimización)
-  - [x] Página 2: Grupos de Interés (Estructura base)
-  - [x] Página 3: Aspectos ASG (Estructura base)
-  - [x] Página 4: Plan de Sostenibilidad e Indicadores (Interactividad)
-  - [x] Equipo de Desarrollo (Identidad visual y datos)
-
-- **¿Cuál ha sido tu enfoque principal?**
-  - [x] Estructura y semántica HTML
-  - [x] Interactividad avanzada y scripts (JS)
-  - [x] Optimización de activos (compresión WebP, manejo de datos)
-  - [x] Ideas de diseño y coordinación técnica
+> [!IMPORTANT]
+> **Centro Educativo:** IES Zaidín-Vergeles (Granada)  
+> **Curso Académico:** 2025-2026 | **Ciclo:** 1º DAW (Turno A)  
+> **Proyecto:** Diseño e Implementación del Plan de Sostenibilidad InforFix  
+> **Empresa Ficticia:** InforFix (Tecnología y Sostenibilidad)
 
 ---
 
-## 👤 Ficha de Integrante: Raúl Gorlat
+## 👥 Fichas de Participación Individual
 
-### 1. Desarrollo Técnico (HTML/CSS)
-- **¿Cuál ha sido tu enfoque principal?**
-  - [x] Realización de la hoja de estilos principal (CSS)
-  - [x] Maquetación HTML de secciones clave
-  - [x] Sugerencias de diseño visual y estética premium
+### 👨‍💻 Adrián Fernández
+*Responsable Técnico y de Diseño*
 
-### 2. Elaboración de Contenido
-- **¿Qué secciones de contenido has redactado o investigado?**
-  - [x] Identificación de Aspectos ASG (Ambiental, Social, Gobernanza)
-  - [x] Definición de acciones sostenibles e indicadores ODS
+- **Desarrollo Web:** Maquetación básica de todas las páginas, optimización de rendimiento y estructura semántica HTML.
+- **Interactividad:** Programación avanzada en JavaScript para el simulador de sostenibilidad, animaciones de scroll y gestión de datos JSON.
+- **Diseño Visual:** Definición de la línea estética, tratamiento de imágenes (WebP) y coordinación técnica general.
+- **Páginas Clave:** `index.html`, `sostenibilidad.html` y `equipo-desarrollo.html`.
 
 ---
 
-## 👤 Ficha de Integrante: Pilar García
+### 🎨 Raúl Gorlat
+*Analista de Sostenibilidad y Diseñador CSS*
 
-### 1. Desarrollo Técnico (HTML/CSS)
-- **¿Cuál ha sido tu enfoque principal?**
-  - [x] Maquetado HTML y jerarquía de contenidos
-  - [x] Sugerencia de estructura y Accesibilidad Web
-  - [x] Sugerencias de estilos visuales
-  - [x] Corrección de errores técnicos y depuración
-
-### 2. Elaboración de Contenido
-- **¿Qué secciones de contenido has redactado o investigado?**
-  - [x] Apoyo en la investigación de Aspectos ASG y ODS
+- **Estilos Visuales:** Creación y mantenimiento de la hoja de estilos principal (`css/main.css`), variables de diseño y estética premium.
+- **Investigación:** Identificación detallada de Aspectos ASG (Ambiental, Social y Gobernanza).
+- **Contenido:** Definición de acciones estratégicas e indicadores ODS aplicables a la empresa InforFix.
+- **Maquetación:** Apoyo en la estructura HTML de secciones informativas clave.
 
 ---
 
-## 👤 Ficha de Integrante: Alba Montoro
+### 🔍 Pilar García
+*Especialista en Calidad y Accesibilidad*
 
-### 1. Desarrollo Técnico (HTML/CSS)
-- **¿Cuál ha sido tu enfoque principal?**
-  - [x] Sugerencias de estilos y apoyo en maquetación
-  - [x] Realización de pruebas de caja negra y funcionamiento general
-
-### 2. Elaboración de Contenido
-- **¿Qué secciones de contenido has redactado o investigado?**
-  - [x] Definición y descripción detallada de la empresa (InforFix)
-  - [x] Redacción completa del Plan de Sostenibilidad
-  - [x] Análisis de Grupos de Interés (Stakeholders)
+- **Control de Calidad:** Revisión técnica exhaustiva de los archivos HTML y CSS para asegurar la limpieza del código.
+- **Accesibilidad:** Implementación de mejores prácticas para garantizar que el portal sea navegable para todos los usuarios.
+- **Depuración:** Identificación y corrección de errores visuales y estructurales (Debugging).
+- **Investigación:** Apoyo fundamental en la síntesis de información sobre los objetivos de sostenibilidad.
 
 ---
 
-## 📝 Resumen de Reparto Final
+### ✍️ Alba Montoro
+*Redactora Principal y Validatriz*
 
-| Integrante | Tarea Principal Asignada | Estado |
-| :--- | :--- | :--- |
-| **Adrián Fernández** | Interactividad JS, Maquetación HTML, Optimización e Imágenes | [Completado] |
-| **Raúl Gorlat** | Estilos CSS, Diseño Visual, Investigación ASG y ODS | [Completado] |
-| **Pilar García** | Accesibilidad, Estructura HTML y Corrección de Errores | [Completado] |
-| **Alba Montoro** | Redacción del Plan, Análisis de Grupos y Pruebas Funcionales | [Completado] |
+- **Redacción Técnica:** Elaboración del contenido del Plan de Sostenibilidad y descripción de la empresa InforFix.
+- **Análisis de Stakeholders:** Identificación y descripción de los Grupos de Interés y sus expectativas.
+- **Validación:** Realización de pruebas funcionales (caja negra) para asegurar que la navegación es intuitiva y libre de fallos.
+- **Maquetación:** Colaboración en la disposición final de los contenidos redactados.
 
 ---
-*Este documento ha sido actualizado el 20/04/2026 para reflejar las contribuciones reales del equipo.*
+
+## 📝 Resumen Ejecutivo de Tareas
+
+| Integrante | Área de Especialización | Estado |
+| :--- | :--- | :---: |
+| **Adrián Fernández** | Lógica JS, Optimización y Diseño General | ✅ |
+| **Raúl Gorlat** | Estilos CSS e Investigación ASG/ODS | ✅ |
+| **Pilar García** | Accesibilidad y Depuración de Código | ✅ |
+| **Alba Montoro** | Redacción de Contenidos y Pruebas de Usuario | ✅ |
+
+---
+
+## 📑 Declaración de Conformidad
+
+El equipo del **Grupo 3** declara que el reparto de tareas ha sido equitativo y que este documento refleja fielmente la participación de cada integrante en el éxito colectivo del proyecto.
+
+**Fecha de Cierre:** 21 de abril de 2026  
+**Lugar:** Granada, IES Zaidín-Vergeles
+
+> [!TIP]
+> Puedes encontrar más detalles sobre el grupo en la página de [Equipo de Desarrollo](file:///c:/Users/Adrian/Documents/Programacion/Web/TrabajoSostenibilidad/equipo-desarrollo.html).
