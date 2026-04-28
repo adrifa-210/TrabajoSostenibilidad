@@ -144,6 +144,10 @@ header nav {
         width: 100%;
     }
 
+    .mobile-top-bar {
+        width: 100%;
+    }
+
     /* Menú móvil */
 
     .hero-grid {
